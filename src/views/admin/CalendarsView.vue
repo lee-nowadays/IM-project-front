@@ -16,7 +16,7 @@
             th 結束日期
             th(colspan="2") 管理
         tbody
-          tr(v-if='calendars.length > 0' v-for='(calendar, idx) in calendars' :key='calendar._id')
+          tr(v-if='sliceCalendars.length > 0' v-for='(calendar, idx) in sliceCalendars' :key='calendar._id')
             td {{ calendar.title }}
             td {{ new Date(calendar.startDate).toLocaleDateString() }}
             td {{ new Date(calendar.endDate).toLocaleDateString() }}
@@ -44,10 +44,21 @@
   v-dialog(v-model="dialog").display-flex.justify-content-center
       v-card
         v-card-text {{ text }}
+  v-pagination(
+    v-model='currentPage'
+    :length="Math.ceil(calendars.length / pageSize) " 
+    rounded="circle" 
+    next-icon="mdi-menu-right"
+    prev-icon="mdi-menu-left" 
+  )
 </template>
-
+<style>
+.fc-event-title{
+  text-overflow: ellipsis;
+}
+</style>
 <script setup>
-import { reactive, ref } from 'vue'
+import { reactive, ref, computed } from 'vue'
 import Swal from 'sweetalert2'
 import { apiAuth } from '@/plugins/axios'
 import '@fullcalendar/core/vdom' 
@@ -56,7 +67,17 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import zhlocale from '@fullcalendar/core/locales/zh-tw'
 
+
+
 const calendars = reactive([])
+
+const pageSize = 10
+const currentPage = ref(1)
+
+const sliceCalendars = computed (()=>{
+  return calendars.slice((currentPage.value * pageSize) - pageSize,(currentPage.value * pageSize))
+})
+console.log(calendars)
 
 const dialog = ref(false)
 const text = ref('')

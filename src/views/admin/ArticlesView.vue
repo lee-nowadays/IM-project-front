@@ -1,13 +1,20 @@
 <template lang="pug">
 .container.mt-5
   #articles
-    v-row
-      v-col(cols='12')
+    .row
+      .col-12
         h1.text-center 文章管理
       v-divider
-      v-col(cols='12')
+      .col-12
         v-btn(color='success' @click="openDialog('', -1)") 新增文章
-      v-col(cols='12')
+        v-text-field(
+          v-model="search"
+          append-icon="mdi-magnify"
+          label="Search"
+          single-line
+          hide-details
+        )
+      .col-12
         v-table
           thead
             tr
@@ -36,32 +43,32 @@
             .text-h5 {{ form._id.length > 0 ? '編輯文章' : '新增文章' }}
           v-card-text
             v-container
-              v-row
-                v-col(cols='12')
+              .row
+                .col-12(cols='12')
                   v-text-field(v-model='form.title' label='標題' :rules='[rules.required]'  variant="outlined")
-                v-col(cols='12').quill
+                .col-12.quill
                   QuillEditor(:options="quillOptions" toolbar='full' v-model:content='form.content' contentType="html")
                   //- v-textarea(v-model='form.content' label='內文' :rules='[rules.required]'  variant="outlined")
-                v-col(cols='12' md='6')
+                .col-12.cols-md-6
                   v-file-input(v-model='form.image' show-size accept='image/*' label='圖片' :prepend-icon="''" :rules='[rules.size]'  variant="outlined")
-                v-col(cols='12' md='6')
+                .col-12.cols-md-6
                   v-file-input(type='file' v-model='form.files' multiple show-size accept='.doc,.docx,.pdf'  label='附件' :prepend-icon="''"  variant="outlined")
-                v-col(cols='12' md='6')
+                .col-12.cols-md-6
                   v-select(:items='categories' v-model='form.category' label='分類' :rules='[rules.required]'  variant="outlined")
-                v-col(cols='12' md='6')
+                .col-12.cols-md-6
                   v-text-field(v-model='form.date' type="date" label='日期' :rules='[rules.required]'  variant="outlined")
-                v-col(cols='12' md='6')
+                .col-12.cols-md-6
                   v-checkbox(v-model='form.post' label='發布')
           v-card-actions
             v-spacer
             v-btn(color='error' @click='form.dialog = false' :disabled='form.submitting') 取消
             v-btn(type='submit' color='primary' :loading='form.submitting') 確定
     v-pagination(
-        v-model='currentPage'
-        :length="Math.ceil(articles.length / pageSize) " 
-        rounded="circle" 
-        next-icon="mdi-menu-right"
-        prev-icon="mdi-menu-left" 
+      v-model='currentPage'
+      :length="Math.ceil(articles.length / pageSize) " 
+      rounded="circle" 
+      next-icon="mdi-menu-right"
+      prev-icon="mdi-menu-left" 
     )
 </template>
 <style>
@@ -83,6 +90,8 @@ import Swal from 'sweetalert2'
 import { apiAuth } from '@/plugins/axios'
 
 // 跟後台設定要一樣
+const search = ref('')
+
 const categories = reactive(['最新消息', '講座資訊', '競賽資訊'])
 const articles = reactive([])
 const form = reactive({
@@ -99,11 +108,13 @@ const form = reactive({
   valid: false,
   submitting: false
 })
+
 const pageSize = 10
 const currentPage = ref(1)
 const sliceArticles = computed (()=>{
   return articles.slice((currentPage.value * pageSize) - pageSize,(currentPage.value * pageSize))
 })
+
 const quillOptions = reactive({
   theme: 'snow'
 })

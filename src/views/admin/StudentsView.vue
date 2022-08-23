@@ -17,7 +17,7 @@
               th 電話
               th(colspan="2") 管理
           tbody
-            tr(v-if='students.length > 0' v-for='(student, idx) in students' :key='student._id')
+            tr(v-if='sliceStudents.length > 0' v-for='(student, idx) in sliceStudents' :key='student._id')
               td {{ student.studentId }}
               td {{ student.class }}
               td {{ student.name }}
@@ -37,15 +37,15 @@
             v-container
               v-row
                 v-col(cols='12')
-                  v-text-field(v-model='form.studentId' label='學號' :rules='[rules.required]'  variant="outlined")
+                  v-text-field(v-model='form.studentId' label='學號' :rules='[rules.required]'  variant="outlined"  counter="8" maxlength="8")
                 v-col(cols='12')
-                  v-text-field(v-model='form.personalId' label='身份證字號' :rules='[rules.required]'  variant="outlined")
+                  v-text-field(v-model='form.personalId' label='身份證字號' :rules='[rules.required]'  variant="outlined" counter="10" maxlength="10")
                 v-col(cols='12')
                   v-text-field(v-model='form.name' label='姓名' :rules='[rules.required]'  variant="outlined")
                 v-col(cols='12' md='6')
                   v-text-field( v-model='form.class' label='班級' :rules='[rules.required]'  variant="outlined")
                 v-col(cols='12' md='6')
-                  v-text-field(v-model='form.phone' label='手機' :rules='[rules.required]'  variant="outlined")
+                  v-text-field(v-model='form.phone' label='手機' :rules='[rules.required]'  variant="outlined"  counter="10" maxlength="10")
                 v-col(cols='12' md='6')
                   v-text-field(v-model='form.residenceAddress' label='戶籍地址' :rules='[rules.required]'  variant="outlined")
                 v-col(cols='12' md='6')
@@ -56,14 +56,28 @@
             v-spacer
             v-btn(color='error' @click='form.dialog = false' :disabled='form.submitting') 取消
             v-btn(type='submit' color='primary' :loading='form.submitting') 確定
+    v-pagination(
+      v-model='currentPage'
+      :length="Math.ceil(students.length / pageSize) " 
+      rounded="circle" 
+      next-icon="mdi-menu-right"
+      prev-icon="mdi-menu-left" 
+    )
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { reactive, ref, computed } from 'vue'
 import Swal from 'sweetalert2'
 import { apiAuth } from '@/plugins/axios'
 
 const students = reactive([])
+
+const pageSize = 10
+const currentPage = ref(1)
+
+const sliceStudents = computed (()=>{
+  return students.slice((currentPage.value * pageSize) - pageSize,(currentPage.value * pageSize))
+})
 
 const form = reactive({
   _id: '',
@@ -82,6 +96,11 @@ const form = reactive({
 })
 // 用規則分類
 const rules = reactive({
+  studentId(v){
+    !!v || '學號必填',
+    /^[0-9]+$/.test(v) || '學號只有數字',
+    (v.length >= 8 && v.length <= 8) || '學號為8位數'
+  },
   required(v) {
     return !!v || '必填'
   }

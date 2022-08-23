@@ -17,7 +17,7 @@
               th 電話
               th(colspan="2") 管理
           tbody
-            tr(v-if='teachers.length > 0' v-for='(teacher, idx) in teachers' :key='teacher._id')
+            tr(v-if='sliceTeachers.length > 0' v-for='(teacher, idx) in sliceTeachers' :key='teacher._id')
               td {{ teacher.name }}
               td 
                 v-img(:src='teacher.image')
@@ -59,13 +59,27 @@
             v-spacer
             v-btn(color='error' @click='form.dialog = false' :disabled='form.submitting') 取消
             v-btn(type='submit' color='primary' :loading='form.submitting') 確定
+    v-pagination(
+      v-model='currentPage'
+      :length="Math.ceil(teachers.length / pageSize) " 
+      rounded="circle" 
+      next-icon="mdi-menu-right"
+      prev-icon="mdi-menu-left" 
+    )
 </template>
 <script setup>
-import { reactive } from 'vue'
+import { reactive, ref, computed } from 'vue'
 import Swal from 'sweetalert2'
 import { apiAuth } from '@/plugins/axios'
 
 const teachers = reactive([])
+
+const pageSize = 10
+const currentPage = ref(1)
+
+const sliceTeachers = computed (()=>{
+  return teachers.slice((currentPage.value * pageSize) - pageSize,(currentPage.value * pageSize))
+})
 
 const form = reactive({
   _id: '',

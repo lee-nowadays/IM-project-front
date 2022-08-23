@@ -1,18 +1,18 @@
 <template lang="pug">
 .container
   #lecture.mt-5.pt-5
-    v-row 
-      v-col(cols='12')
+    .row 
+      .col-12
         h1() {{ article.title }}
       v-divider 
-      v-col.text-center(cols='12')
+      .col-12.text-center
         v-img(v-if='article.image' :src='article.image')
-      v-col(cols='12')
+      .col-12
         p(v-html='article.content' ) 
-      v-col(cols='12' v-for='(file, idx) in article.files')
+      .col-12(cols='12' v-for='(file, idx) in article.files')
         //- a(:href='file.link' target='_blank')  附件{{ idx + 1 }}
         v-btn(variant="text" @click='dl(file.link, idx+1)') 附件{{ idx + 1 }}
-      v-col(cols='12')
+      .col-12
         v-btn(v-if="article.category === '講座資訊'" color='primary' @click='addLecture({ lecture:article._id })') 我要報名
       v-overlay.align-center.justify-center(:model-value='!article.post')
         h1.text-black 已下架
