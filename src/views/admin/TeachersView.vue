@@ -122,7 +122,6 @@ const openDialog = (_id, idx) => {
 }
 
 const del = async (_id,idx) => {
-  console.log(_id)
   await apiAuth.delete('/teachers/'+ _id)
   teachers.splice(idx, 1)
 }

@@ -33,7 +33,6 @@
                 v-window-item(value='course') {{ card.course }}
 </template>
 
-
 <script setup>
 import { reactive, ref } from 'vue'
 import Swal from 'sweetalert2'
@@ -58,9 +57,6 @@ const teacherInfo = (_id,idx) =>{
   card.course = teachers[idx].course 
   dialog.value = true
 }
-
-
-console.log(teachers[0])
 
 const card = reactive({
   _id:'',

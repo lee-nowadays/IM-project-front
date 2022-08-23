@@ -65,9 +65,6 @@ console.log(articles)
 const init = async () => {
   try {
     const { data } = await api.get('/articles')
-    // console.log(data.article.filter(a=>{
-    //   return a.category === '最新消息'
-    // }))
     Object.assign(articles, _.groupBy([...data.article], 'category'))
   }catch (error) {
     Swal.fire({

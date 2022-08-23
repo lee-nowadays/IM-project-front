@@ -33,7 +33,6 @@ const lectures = reactive([])
 const init = async () => {
   try {
     const { data } = await apiAuth.get('/students/lectures')
-    // console.log(lectures)
     data.result.map(lec => {   
       const time = Date.parse(lec.lecture.date)
       if(time < Date.now()){

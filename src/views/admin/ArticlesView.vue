@@ -174,7 +174,6 @@ const submitForm = async () => {
       articlefd.append(key, form[key][0])
     }
     else if (key === 'files') {
-      // console.log(form.files[0].name)
       for (const file of form.files) {
         articlefd.append(key, file)
       }
