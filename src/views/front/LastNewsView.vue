@@ -2,41 +2,48 @@
 #lastnews.mt-5.pt-5
   .container.lastnews
     .row 
-      .col-12(v-if='tab === "one"')
+      .col-12(v-if='tab === "最新消息"')
         h1.text-center.mb-10 最新消息
-      .col-12(v-if='tab === "two"')
+      .col-12(v-if='tab === "講座資訊"')
         h1.text-center.mb-10 講座資訊
-      .col-12(v-if='tab === "three"')
+      .col-12(v-if='tab === "競賽資訊"')
         h1.text-center.mb-10 競賽資訊
       .col-12
         v-tabs(v-model='tab')
-          v-tab(value="one") 最新消息
-          v-tab(value="two") 講座資訊
-          v-tab(value="three") 競賽資訊
+          v-tab(value="最新消息") 最新消息
+          v-tab(value="講座資訊") 講座資訊
+          v-tab(value="競賽資訊") 競賽資訊
       v-divider
       .col-12
         v-window(v-model='tab')
-          v-window-item(value='one')
-            .col-12(v-if="articles.最新消息.length > 0 ")
+          v-window-item(value='最新消息')
+            .col-12(v-if="sliceArticles.length > 0 ")
               v-list
-                v-list-item(v-for='article in articles.最新消息')
+                v-list-item(v-for='article in sliceArticles')
                   router-link(:to="'/article/' + article._id" ) {{ new Date(article.date).toLocaleDateString() }}  {{ article.title }}
             .col-12(v-else)
               h1.text-center 沒有消息
-          v-window-item(value='two')
-            .col-12(v-if="articles.講座資訊.length > 0 ")
+          v-window-item(value='講座資訊')
+            .col-12(v-if="sliceArticles.length > 0 ")
               v-list
-                v-list-item(v-for='article in articles.講座資訊')
+                v-list-item(v-for='article in sliceArticles')
                   router-link(:to="'/article/' + article._id" ) {{ new Date(article.date).toLocaleDateString() }}  {{ article.title }}
             .col-12(v-else )
               h1.text-center 沒有講座
-          v-window-item(value='three')
-            .col-12( v-if="articles.競賽資訊.length > 0 ")
+          v-window-item(value='競賽資訊')
+            .col-12( v-if="sliceArticles.length > 0 ")
               v-list
-                v-list-item(v-for='article in articles.競賽資訊')
+                v-list-item(v-for='article in sliceArticles')
                   router-link(:to="'/article/' + article._id" ) {{ new Date(article.date).toLocaleDateString() }}  {{ article.title }}
             .col-12(v-else )
               h1.text-center 沒有競賽
+          v-pagination(
+            v-model='currentPage'
+            :length="Math.ceil(sliceArticles.length / pageSize) " 
+            rounded="circle" 
+            next-icon="mdi-menu-right"
+            prev-icon="mdi-menu-left" 
+          )
 </template>
 
 <script setup>
@@ -53,18 +60,21 @@ const articles = reactive({
   講座資訊: [],
   競賽資訊: []
 })
-
-const tab = ref('one')
+const tab = ref('最新消息')
 
 const pageSize = 10
 const currentPage = ref(1)
-const sliceArticle = computed(()=>{
-  return articles.slice((currentPage.value * pageSize) - pageSize,(currentPage.value * pageSize))
+const sliceArticles = computed(()=>{
+  return articles[tab.value].slice((currentPage.value * pageSize) - pageSize,(currentPage.value * pageSize))
 })
-console.log(articles)
+// console.log(tab.value)
 const init = async () => {
   try {
     const { data } = await api.get('/articles')
+    // const group = _.groupBy([...data.article], 'category')
+    // articles.最新消息 = group.最新消息
+    // articles.講座資訊 = group.講座資訊
+    // articles.競賽資訊 = group.競賽資訊
     Object.assign(articles, _.groupBy([...data.article], 'category'))
   }catch (error) {
     Swal.fire({

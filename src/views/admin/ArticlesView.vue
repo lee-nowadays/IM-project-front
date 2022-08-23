@@ -17,7 +17,7 @@
               th 發布狀態
               th(colspan="2") 管理
           tbody
-            tr(v-if='articles.length > 0' v-for='(article, idx) in articles' :key='article._id')
+            tr(v-if='sliceArticles.length > 0' v-for='(article, idx) in sliceArticles' :key='article._id')
               td {{ new Date(article.date).toLocaleDateString() }}
               td {{ article.title }}
               td {{ article.category }}
@@ -56,6 +56,13 @@
             v-spacer
             v-btn(color='error' @click='form.dialog = false' :disabled='form.submitting') 取消
             v-btn(type='submit' color='primary' :loading='form.submitting') 確定
+    v-pagination(
+        v-model='currentPage'
+        :length="Math.ceil(articles.length / pageSize) " 
+        rounded="circle" 
+        next-icon="mdi-menu-right"
+        prev-icon="mdi-menu-left" 
+    )
 </template>
 <style>
 .quill{
@@ -71,7 +78,7 @@
 <script setup>
 import { QuillEditor } from '@vueup/vue-quill'
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
-import { reactive } from 'vue'
+import { reactive, ref, computed } from 'vue'
 import Swal from 'sweetalert2'
 import { apiAuth } from '@/plugins/axios'
 
@@ -92,7 +99,11 @@ const form = reactive({
   valid: false,
   submitting: false
 })
-
+const pageSize = 10
+const currentPage = ref(1)
+const sliceArticles = computed (()=>{
+  return articles.slice((currentPage.value * pageSize) - pageSize,(currentPage.value * pageSize))
+})
 const quillOptions = reactive({
   theme: 'snow'
 })
@@ -140,7 +151,7 @@ const del = async (_id,idx) => {
 
 const postArticle = async (_id, idx) => {
   try {
-    const { data } = await apiAuth.patch('/articles/'+ _id +'/post',{ post : !articles[idx].post })
+    await apiAuth.patch('/articles/'+ _id +'/post',{ post : !articles[idx].post })
     articles[idx].post = !articles[idx].post
   } catch (error) {
     Swal.fire({

@@ -41,10 +41,13 @@
           v-spacer
           v-btn(color='error' @click='form.dialog = false' :disabled='form.submitting') 取消
           v-btn(type='submit' color='primary' :loading='form.submitting') 確定
+  v-dialog(v-model="dialog").display-flex.justify-content-center
+      v-card
+        v-card-text {{ text }}
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 import Swal from 'sweetalert2'
 import { apiAuth } from '@/plugins/axios'
 import '@fullcalendar/core/vdom' 
@@ -54,6 +57,13 @@ import interactionPlugin from '@fullcalendar/interaction'
 import zhlocale from '@fullcalendar/core/locales/zh-tw'
 
 const calendars = reactive([])
+
+const dialog = ref(false)
+const text = ref('')
+const showInfo = ({ event }) =>{
+  dialog.value = true
+  text.value = event._def.title
+}
 
 const selectmultiple= async (selectionInfo) =>{
   let title = prompt('請輸入標題')
@@ -76,6 +86,7 @@ const selectmultiple= async (selectionInfo) =>{
 const calendarOptions = reactive({
   plugins: [ dayGridPlugin, interactionPlugin],
   select:selectmultiple,
+  eventClick:showInfo,
   initialView: 'dayGridMonth',
   locale:zhlocale,
   selectable: true,
