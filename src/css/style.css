@@ -1,0 +1,282 @@
+@charset "UTF-8";
+.v-main {
+  padding: 0 !important;
+}
+
+.v-app-bar.v-toolbar {
+  background: #0D47A1;
+  color: #fff;
+}
+.v-app-bar.v-toolbar .v-toolbar__content {
+  padding-left: 50px;
+  line-height: 100px;
+  font-size: 2rem !important;
+}
+.v-app-bar.v-toolbar .v-toolbar__content a {
+  display: block;
+  height: 100%;
+  font-size: 1.3rem;
+}
+.v-app-bar.v-toolbar .v-toolbar__content a :hover {
+  background: #fff;
+}
+.v-app-bar.v-toolbar .v-toolbar__append {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.menu .bm-menu {
+  background: #0D47A1;
+  z-index: 1000;
+}
+.menu .bm-burger-button {
+  z-index: 500;
+}
+.menu .bm-burger-button .bm-burger-bars {
+  background: #0D47A1;
+}
+.menu .v-list-item {
+  color: #fff;
+}
+
+.appbar {
+  display: none;
+}
+
+#footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  max-height: 100%;
+  background: #424242;
+  color: #fff;
+  margin-top: 30px;
+}
+
+#home .v-list-item {
+  padding: 0px;
+}
+#home .lastnews .v-list a {
+  display: block;
+  width: 100%;
+  font-weight: bold;
+  height: 100%;
+  padding: 1rem 0;
+  color: #0D47A1;
+  text-decoration: none;
+}
+#home .lastnews .v-list a:hover {
+  background: #E1F5FE;
+}
+#home .v-window {
+  overflow: hidden;
+}
+
+#mainphoto {
+  height: 100%;
+  background-image: url("../assets/學校.jpg");
+  background-size: 100%;
+  background-attachment: fixed;
+  position: relative;
+}
+#mainphoto .overlay {
+  color: #0D47A1;
+  font-weight: bolder;
+  background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0.9)), to(transparent));
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.9), transparent);
+  width: 100%;
+}
+#mainphoto .overlay :nth-child(1) {
+  font-size: 0.5rem;
+  margin-bottom: 0;
+}
+#mainphoto .overlay :nth-child(2) {
+  font-size: 0.75rem;
+  margin-bottom: 0;
+}
+#mainphoto .overlay :nth-child(3) {
+  font-size: 1rem;
+  margin-bottom: 2vw;
+}
+#mainphoto .overlay ul {
+  list-style: none;
+  padding: 0;
+}
+#mainphoto .overlay ul li {
+  margin-bottom: 0.25rem !important;
+}
+#mainphoto .overlay ul h5 {
+  font-size: 0.25rem !important;
+  font-weight: 900;
+}
+
+#lastnews .lastnews .v-list-item {
+  padding: 0 16px;
+}
+#lastnews .lastnews a {
+  display: block;
+  width: 100%;
+  font-weight: bold;
+  height: 100%;
+  padding: 1rem 0;
+  color: #0D47A1;
+  text-decoration: none;
+}
+#lastnews .lastnews a:hover {
+  background: #E1F5FE;
+}
+
+#about h1, #about h2 {
+  font-weight: bolder;
+  color: #0D47A1;
+}
+#about .text {
+  font-size: 1.5rem;
+  line-height: 2;
+}
+#about .title {
+  font-size: 1.5rem;
+  font-weight: bolder;
+}
+#about li {
+  font-size: 1.2rem;
+  list-style: none;
+  font-weight: normal;
+}
+
+#teachers .v-img {
+  position: relative;
+}
+#teachers .v-img:hover .overlay {
+  opacity: 1;
+}
+#teachers .overlay {
+  opacity: 0;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: #fff;
+  font-size: 3rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: end;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  background: -webkit-gradient(linear, left bottom, left top, from(rgb(0, 0, 0)), color-stop(rgba(0, 0, 0, 0.3)), to(transparent));
+  background: linear-gradient(0deg, rgb(0, 0, 0), rgba(0, 0, 0, 0.3), transparent);
+}
+#teachers .teacherDialog {
+  height: 100%;
+  width: 100%;
+}
+
+@media (min-width: 576px) {
+  #mainphoto {
+    height: 300px;
+  }
+  #mainphoto .container-fluid {
+    position: absolute;
+    top: calc(15% + 1.25vw);
+    left: calc(5% + 1.25vw);
+  }
+  #mainphoto .overlay :nth-child(1) {
+    font-size: 0.75rem;
+    margin-bottom: 0;
+  }
+  #mainphoto .overlay :nth-child(2) {
+    font-size: 1rem;
+    margin-bottom: 0;
+  }
+  #mainphoto .overlay :nth-child(3) {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+  #mainphoto .overlay ul {
+    list-style: none;
+    padding: 0;
+  }
+  #mainphoto .overlay ul li {
+    margin-bottom: 0.25rem !important;
+  }
+  #mainphoto .overlay ul h5 {
+    font-size: 0.25rem !important;
+    font-weight: 900;
+  }
+  .teacher .teacherDialog h2 {
+    font-size: 5rem;
+  }
+}
+@media (min-width: 992px) {
+  .menu {
+    display: none;
+  }
+  .appbar {
+    display: block;
+  }
+  #mainphoto {
+    height: 500px;
+  }
+  #mainphoto .container-fluid {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+  }
+  #mainphoto .overlay {
+    width: 50%;
+    padding: 2rem;
+  }
+  #mainphoto .overlay :nth-child(1) {
+    font-size: 1.5rem;
+    margin-bottom: 0;
+  }
+  #mainphoto .overlay :nth-child(2) {
+    font-size: 2rem;
+    margin-bottom: 0;
+  }
+  #mainphoto .overlay :nth-child(3) {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  #mainphoto .overlay ul {
+    list-style: none;
+    padding: 0;
+  }
+  #mainphoto .overlay ul li {
+    margin-bottom: 0.25rem !important;
+  }
+  #mainphoto .overlay ul h5 {
+    font-size: 1.2rem !important;
+    font-weight: 900;
+  }
+}
+@media (min-width: 1440px) {
+  #mainphoto {
+    height: 900px;
+  }
+  #mainphoto .container-fluid {
+    left: 15%;
+  }
+}
