@@ -23,7 +23,7 @@ import { reactive } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { api } from '@/plugins/axios'
 import Swal from 'sweetalert2'
-import { useStudentStore } from '@/stores/students'
+import { useStudentStore } from '@/stores/student'
 import axios from 'axios'
 import download from 'downloadjs'
 

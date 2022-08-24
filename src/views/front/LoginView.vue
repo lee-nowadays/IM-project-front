@@ -17,7 +17,7 @@
 </style>
 <script setup>
 import { reactive, ref } from 'vue'
-import { useStudentStore } from '@/stores/students'
+import { useStudentStore } from '@/stores/student'
 
 const student = useStudentStore()
 const valid = ref(false)

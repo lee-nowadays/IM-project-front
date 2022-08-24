@@ -6,13 +6,14 @@
         h1.text-center 文章管理
       v-divider
       .col-12
-        v-btn(color='success' @click="openDialog('', -1)") 新增文章
+        v-btn(color='blue darken-4' @click="openDialog('', -1)") 新增文章
         v-text-field(
           v-model="search"
           append-icon="mdi-magnify"
           label="Search"
           single-line
           hide-details
+          variant="outlined"
         )
       .col-12
         v-table
@@ -31,7 +32,7 @@
               td 
                 v-checkbox(@click='postArticle(article._id, idx)' :model-value='article.post')
               td 
-                v-btn(color='blue darken-4' @click='openDialog(article._id, idx)' variant="outlined") 編輯
+                v-btn(color='blue darken-4' @click='openDialog(article._id)' variant="outlined") 編輯
               td
                 v-btn(color='error' @click='del(article._id,idx)' variant="outlined") 刪除
             tr(v-else)
@@ -112,8 +113,12 @@ const form = reactive({
 const pageSize = 10
 const currentPage = ref(1)
 const sliceArticles = computed (()=>{
-  return articles.slice((currentPage.value * pageSize) - pageSize,(currentPage.value * pageSize))
+  return articles.slice((currentPage.value * pageSize) - pageSize,(currentPage.value * pageSize)).filter(item=>{
+    const inc = item.title.toLowerCase().includes(search.value.toLowerCase())
+    return inc
+  })
 })
+
 
 const quillOptions = reactive({
   theme: 'snow'
@@ -131,14 +136,15 @@ const rules = reactive({
 
 
 
-const openDialog = (_id, idx) => {
+const openDialog = (_id) => {
+  const idx = sliceArticles.value.findIndex(item => item._id === _id)
   form._id = _id
   if (idx > -1) {
-    form.title = articles[idx].title
-    form.content = articles[idx].content
-    form.category = articles[idx].category
-    form.post = articles[idx].post
-    form.date = articles[idx].date
+    form.title = sliceArticles.value[idx].title
+    form.content = sliceArticles.value[idx].content
+    form.category = sliceArticles.value[idx].category
+    form.post = sliceArticles.value[idx].post
+    form.date = sliceArticles.value[idx].date
   } else {
     form.title = ''
     form.content = ''

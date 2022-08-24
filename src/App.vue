@@ -5,5 +5,6 @@ v-app
 
 
 <script setup>
-
+import { useStudentStore } from '@/stores/student'
+useStudentStore().getStudent()
 </script>

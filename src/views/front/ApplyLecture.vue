@@ -28,7 +28,7 @@
 import { reactive } from 'vue'
 import Swal from 'sweetalert2'
 import { apiAuth } from '@/plugins/axios.js';
-import { useStudentStore } from '@/stores/students'
+import { useStudentStore } from '@/stores/student'
 
 const student = useStudentStore()
 

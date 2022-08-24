@@ -156,5 +156,28 @@ export const useStudentStore = defineStore({
         return false
       }
     },
+    async getStudent () {
+      if (this.token.length === 0) return
+      try {
+        const { data } = await apiAuth.get('/students')
+        this.studentId = data.result.studentId
+        this.name = data.result.name
+        this.email = data.result.email
+        this.class = data.result.class
+        this.residenceAddress = data.result.residenceAddress
+        this.currentAddress = data.result.currentAddress
+        this.personalId = data.result.personalId
+        this.about = data.result.about
+        this.phone = data.result.phone
+        this.lectures = data.result.lectures
+        this.role = data.result.role
+      } catch (error) {
+        this.logout()
+      }
+    }
+  },
+  persist: {
+    key: 'vite-IM',
+    paths: ['token']
   }
 })

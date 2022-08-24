@@ -1,5 +1,5 @@
 import axios from "axios"
-import { useStudentStore } from "@/stores/students"
+import { useStudentStore } from "@/stores/student"
 import router from '@/router'
 
 // 會將 env 設定的網址 帶入 post get 這種東西前面

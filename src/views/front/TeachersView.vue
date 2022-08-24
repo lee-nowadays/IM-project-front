@@ -27,7 +27,7 @@
               v-tab(value="experience") 經歷
               v-tab(value="course") 課程
             v-card-text
-              v-window(v-model='tab')(style="white-space: pre;")
+              v-window(v-model='tab')
                 v-window-item(value='proInterest') {{ card.proInterest }}
                 v-window-item(value='experience') {{ card.experience }}
                 v-window-item(value='course') {{ card.course }}

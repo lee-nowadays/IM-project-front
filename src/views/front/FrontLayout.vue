@@ -62,7 +62,7 @@ v-main
 <script setup>
 import { ref } from 'vue'
 import { storeToRefs } from 'pinia'
-import { useStudentStore } from '@/stores/students'
+import { useStudentStore } from '@/stores/student'
 import { Slide as Menu } from 'vue3-burger-menu'
 
 const student = useStudentStore()

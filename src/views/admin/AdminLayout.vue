@@ -15,7 +15,7 @@ v-main
 </template>
 
 <script setup>
-import { useStudentStore } from '@/stores/students'
+import { useStudentStore } from '@/stores/student'
 
 import { storeToRefs } from 'pinia'
 

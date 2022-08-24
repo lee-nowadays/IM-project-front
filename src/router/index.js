@@ -2,7 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import FrontLayout from '../views/front/FrontLayout.vue'
 import HomeView from '../views/front/HomeView.vue'
 import NotFoundView from '@/views/NotFound.vue'
-import { useStudentStore } from '@/stores/students'
+import { useStudentStore } from '@/stores/student'
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
