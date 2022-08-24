@@ -2,6 +2,9 @@
 #teachers.mt-5.pt-5
   .container.teacher
     .row
+      .col-12
+        h1.text-center.pb-3 師資介紹
+    .row
       .col-12.col-md-6.col-lg-3(v-if="teachers.length > 0" v-for='(teacher, idx) in teachers')
         .col-12.m-3.mx-auto
           v-img(:src='teacher.image')
@@ -9,8 +12,8 @@
       .col-12.col-md-6.col-lg-3(v-else)
         h1.text-center(v-if='loaded') 沒有老師
         h1.text-center(v-else indeterminate  color="primary") 載入中
-    v-dialog(v-model='dialog' transition="dialog-bottom-transition" scrollable).teacherDialog
-      v-card 
+    v-dialog(v-model='dialog' transition="dialog-bottom-transition" scrollable max-height='1080'  max-width='1920').teacherDialog
+      v-card.teacherCard
         .row 
           .col-12.col-lg-6
             v-img(:src='card.image')
@@ -22,12 +25,12 @@
             v-card-text 傳真：{{ card.fax }}
             v-card-text 信箱：{{ card.email }}
           .col-12
-            v-tabs(v-model="tab")
+            v-tabs(v-model="tab" )
               v-tab(value="proInterest") 專業興趣
               v-tab(value="experience") 經歷
               v-tab(value="course") 課程
             v-card-text
-              v-window(v-model='tab')
+              v-window(v-model='tab' style="white-space:pre ;")
                 v-window-item(value='proInterest') {{ card.proInterest }}
                 v-window-item(value='experience') {{ card.experience }}
                 v-window-item(value='course') {{ card.course }}

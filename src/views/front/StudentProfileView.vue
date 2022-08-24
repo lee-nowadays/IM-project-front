@@ -1,100 +1,50 @@
 <template lang="pug">
 #studentProfile.mt-5.pt-5
   .container
-    v-row
-      v-col(cols='12')
-        h1 個人資料
-    v-row
+    .row
+      .col-12
+        h1.text-center 個人資料
+    .row
       v-card
-        v-row
-          v-col(cols='12').editprofile 
-            v-btn(color='blue darken-4' @click="openForm")#edit 編輯
-          v-col(cols='12' v-if='form.open === true')
+        .row.profile
+          .col-12
+            v-btn(color='blue darken-4' @click="openForm").edit 編輯
+          .col-12(cols='12' v-if='form.open === true')
             v-form(v-model='form.valid' @submit.prevent='submitForm')
-              v-col(cols='12' md='6') 學號：{{ student.studentId }}
-              v-col(cols='12' md='6') 班級：{{ student.class }}
-              v-col(cols='12' md='6') 身份證字號：{{ student.personalId }}
-              v-col(cols='12' md='6') 姓名：{{ student.name }}
-              v-col(cols='12' md='6')
+              .col-12.col-md-6 學號：{{ student.studentId }}
+              .col-12.col-md-6 班級：{{ student.class }}
+              .col-12.col-md-6 身份證字號：{{ student.personalId }}
+              .col-12.col-md-6 姓名：{{ student.name }}
+              .col-12.col-md-6
                 v-text-field(type='email' v-model='form.email' label='信箱' :rules='rules.email'  variant="outlined")
-              v-col(cols='12' md='6') 
+              .col-12.col-md-6 
                 v-text-field(v-model='form.phone' label='手機' :rules='rules.phone' counter = "10" maxlength = '10'  variant="outlined")
-              v-col(cols='12' md='6') 
+              .col-12.col-md-6 
                 v-text-field(v-model='form.residenceAddress' label='戶籍地址：'  variant="outlined")
-              v-col(cols='12' md='6') 
+              .col-12.col-md-6 
                 v-text-field(v-model='form.currentAddress' label='聯絡地址：'  variant="outlined")
-              v-col(cols='12')
+              .col-12
                 h1.text-center 密碼
-              v-col(cols='12' md='6')
+              .col-12.col-md-6
                 v-text-field(type='password' v-model='form.password' label='新密碼：' :rules='rules.password'  autocomplete="on" counter = "20" maxlength = '20'  variant="outlined")
-              v-col(cols='12' md='6')
+              .col-12.col-md-6
                 v-text-field(type='password' v-model='form.confirmpassword' label='確認新密碼：' :rules='rules.confirmpassword'  autocomplete="on" counter = "20" maxlength = '20'  variant="outlined")
-              v-col(cols='12')
+              .col-12
                 v-spacer
                 v-btn(color='blue darken-4' @click='closeForm()' :disabled='form.submitting' variant="outlined").me-3 取消
                 v-btn(:disabled='form.password !== form.confirmpassword' type='submit' color='blue darken-4' :loading='form.submitting') 確定
-          v-col(cols='12' v-else)
-            v-row
-              v-col(cols='12' md='6') 學號：{{ student.studentId }}
-              v-col(cols='12' md='6') 班級：{{ student.class }}
-              v-col(cols='12' md='6') 身份證字號：{{ student.personalId }}
-              v-col(cols='12' md='6') 姓名：{{ student.name }}
-              v-col(cols='12' md='6') 信箱：{{ student.email }}
-              v-col(cols='12' md='6') 手機：{{ student.phone }}
-              v-col(cols='12' md='6') 戶籍地址：{{ student.residenceAddress }}
-              v-col(cols='12' md='6') 聯絡地址：{{ student.currentAddress }}
+          .col-12(cols='12' v-else)
+            .row
+              .col-12.col-md-6 學號：{{ student.studentId }}
+              .col-12.col-md-6 班級：{{ student.class }}
+              .col-12.col-md-6 身份證字號：{{ student.personalId }}
+              .col-12.col-md-6 姓名：{{ student.name }}
+              .col-12.col-md-6 信箱：{{ student.email }}
+              .col-12.col-md-6 手機：{{ student.phone }}
+              .col-12.col-md-6 戶籍地址：{{ student.residenceAddress }}
+              .col-12.col-md-6 聯絡地址：{{ student.currentAddress }}
 
 </template>
-
-<style scoped>
-  .v-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  .v-row{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    flex-wrap: wrap;
-  }
-  .v-col{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .v-card{
-    display: flex;
-    flex-wrap: wrap;
-    padding: 20px 50px 0;
-    width: calc( 60% + 10vw);
-    /* width: 80%; */
-    position: relative;
-  }
-  .v-form{
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-  }
-  .v-card-actions{
-    margin-left: auto;
-  }
-  .editprofile{
-    display: flex;
-    justify-content: end;
-  }
-  .submit{
-    display: flex;
-    justify-content: end;
-  }
-  .password{
-    margin-top:50px ;
-  }
-
-</style>
 
 <script setup>
 import { reactive } from 'vue'
@@ -123,10 +73,6 @@ const form = reactive({
   confirmpassword : '',
   open : false
 })
-
-
-
-
 
 const student = reactive({
   _id : '',
@@ -193,7 +139,6 @@ const submitForm = async () => {
   }
   try {
     const { data } = await apiAuth.patch('/students/me' , studentfd)
-
     student.email = data.student.email
     student.phone = data.student.phone
     student.residenceAddress = data.student.residenceAddress
@@ -233,6 +178,7 @@ const init = async () => {
     student.phone = data.student.phone
     student.password = data.student.password
     } catch (error) {
+    console.log(error)
     Swal.fire({
       icon:'error',
       title:'失敗',

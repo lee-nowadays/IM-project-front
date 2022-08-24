@@ -13,8 +13,6 @@
           .col-12.mx-auto
             v-btn.mx-auto(color='success' type='submit' :loading='loading') 登入
 </template>
-<style>
-</style>
 <script setup>
 import { reactive, ref } from 'vue'
 import { useStudentStore } from '@/stores/student'

@@ -1,6 +1,9 @@
 <template lang="pug">
 #calendar.mt-5.pt-5
   .container
+    .row
+      .col-12
+        h1.text-center.pb-3 行事曆
     FullCalendar(:options="calendarOptions")
     v-dialog(v-model="dialog").display-flex.justify-content-center
       v-card

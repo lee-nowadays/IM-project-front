@@ -56,17 +56,13 @@ v-main
         p.text-center Copyright &copy; 2022 . All rights reserved.
 
 </template>
-<style>
-
-</style>
 <script setup>
-import { ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useStudentStore } from '@/stores/student'
 import { Slide as Menu } from 'vue3-burger-menu'
 
 const student = useStudentStore()
 const { logout } = student
-const { isLogin, isAdmin, lecture } = storeToRefs(student)
+const { isLogin, isAdmin } = storeToRefs(student)
 
 </script>

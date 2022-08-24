@@ -1,11 +1,11 @@
 <template lang="pug">
 #applyLecture.mt-5.pt-5
   .container
-    v-row
-      v-col(cols='12')
+    .row
+      .col-12
         h1.text-center 報名狀態
       v-divider
-      v-col(cols='12')
+      .col-12
         v-table
           thead
             tr

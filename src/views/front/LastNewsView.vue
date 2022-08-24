@@ -3,37 +3,36 @@
   .container.lastnews
     .row 
       .col-12(v-if='tab === "最新消息"')
-        h1.text-center.mb-10 最新消息
+        h1.text-center.mb-5 最新消息
       .col-12(v-if='tab === "講座資訊"')
-        h1.text-center.mb-10 講座資訊
+        h1.text-center.mb-5 講座資訊
       .col-12(v-if='tab === "競賽資訊"')
-        h1.text-center.mb-10 競賽資訊
+        h1.text-center.mb-5 競賽資訊
       .col-12
         v-tabs(v-model='tab')
           v-tab(value="最新消息") 最新消息
           v-tab(value="講座資訊") 講座資訊
           v-tab(value="競賽資訊") 競賽資訊
-      v-divider
       .col-12
         v-window(v-model='tab')
           v-window-item(value='最新消息')
             .col-12(v-if="sliceArticles.length > 0 ")
               v-list
-                v-list-item(v-for='article in sliceArticles')
+                v-list-item(prepend-icon='mdi-book-open-page-variant-outline' v-for='article in sliceArticles')
                   router-link(:to="'/article/' + article._id" ) {{ new Date(article.date).toLocaleDateString() }}  {{ article.title }}
             .col-12(v-else)
               h1.text-center 沒有消息
           v-window-item(value='講座資訊')
             .col-12(v-if="sliceArticles.length > 0 ")
               v-list
-                v-list-item(v-for='article in sliceArticles')
+                v-list-item(prepend-icon='mdi-book-open-page-variant-outline' v-for='article in sliceArticles')
                   router-link(:to="'/article/' + article._id" ) {{ new Date(article.date).toLocaleDateString() }}  {{ article.title }}
             .col-12(v-else )
               h1.text-center 沒有講座
           v-window-item(value='競賽資訊')
             .col-12( v-if="sliceArticles.length > 0 ")
               v-list
-                v-list-item(v-for='article in sliceArticles')
+                v-list-item(prepend-icon='mdi-book-open-page-variant-outline' v-for='article in sliceArticles')
                   router-link(:to="'/article/' + article._id" ) {{ new Date(article.date).toLocaleDateString() }}  {{ article.title }}
             .col-12(v-else )
               h1.text-center 沒有競賽

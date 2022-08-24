@@ -159,7 +159,7 @@ export const useStudentStore = defineStore({
     async getStudent () {
       if (this.token.length === 0) return
       try {
-        const { data } = await apiAuth.get('/students')
+        const { data } = await apiAuth.get('/students/me')
         this.studentId = data.result.studentId
         this.name = data.result.name
         this.email = data.result.email

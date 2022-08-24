@@ -28,12 +28,14 @@
   padding: 0;
 }
 .menu{
+  position: fixed;
+  top: -30px;
+  right: 90px;
+  z-index: 1000;
   .bm-menu{
     background: #0D47A1 ;
-    z-index: 1000;
   }
   .bm-burger-button{
-    z-index: 500;
     .bm-burger-bars{
       background: #0D47A1;
     }
@@ -45,7 +47,21 @@
 .appbar{
   display: none;
 }
-
+.edit{
+  margin-left: auto;
+  margin-right: 24px;
+  color: #fff !important;
+}
+.v-slide-group,.v-slide-group__container{
+  height: 80px !important;
+  justify-content: center;
+  align-items: center;
+  background: #0D47A1;
+}
+.v-tab{
+  color: #fff;
+  height: 60px;
+}
 #footer {
   display: flex;
   justify-content: center;
@@ -55,6 +71,7 @@
   color:#fff;
   margin-top: 30px;
 }
+
 #home{
   .v-list-item{
     padding:0px
@@ -114,7 +131,10 @@
 
 #lastnews{
   .lastnews{
-    .v-divider{}
+    h1{
+      color: #0D47A1;
+      font-weight: bolder;
+    }
     .v-list-item{
       padding:0 16px
     }
@@ -130,6 +150,10 @@
     a:hover{
       background: #E1F5FE;
     }
+  }
+  .v-list-item-icon--start{
+    margin-right: 10px;
+    color: #0D47A1;
   }
 }
 
@@ -152,16 +176,19 @@
     font-weight: normal;
   }
 }
-// #calendar{
-//   margin-top: 60px;
-// }
-// #contact{
-//   margin-top: 60px;
-// }
+#calendar{
+  h1{
+    color: #0D47A1;
+    font-weight: bolder;
+  }
+}
 #teachers{
+  h1{
+    color: #0D47A1;
+    font-weight: bolder;
+  }
   .v-img{
     position: relative;
-    
   }
   .v-img:hover{
     .overlay{
@@ -188,10 +215,58 @@
     height: 100%;
     width: 100%;
   }
+  .v-card .v-card-text{
+    width: 400px ;
+  }
 }
-// #login{
-//   margin-top: 60px;
-// }
+#contact{
+  h1{
+    color: #0D47A1;
+    font-weight: bolder;
+  }
+}
+#login{
+  h1{
+    color: #0D47A1;
+    font-weight: bolder;
+  }
+}
+#studentProfile{
+  h1{
+    color: #0D47A1;
+    font-weight: bolder;
+  }
+  .v-form{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 12px;
+    .col-12{
+      padding: 12px;
+    }
+    .col-12:nth-last-child(1){
+      display: flex;
+      padding: 0;
+    }
+  }
+  .profile{
+    padding: 32px;
+    .col-12{
+      padding: 16px;
+    }
+  }
+}
+#applyLecture{
+  h1{
+    color: #0D47A1;
+    font-weight: bolder;
+  }
+}
+#passLecture{
+  h1{
+    color: #0D47A1;
+    font-weight: bolder;
+  }
+}
 @media (min-width:576px){
   #home{
     // margin-top: 35px;

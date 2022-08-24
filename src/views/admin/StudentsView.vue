@@ -1,13 +1,13 @@
 <template lang="pug">
 .container.mt-5
   #students
-    v-row
-      v-col(cols='12')
+    .row
+      .col-12
         h1.text-center 學生管理
       v-divider
-      v-col(cols='12')
-        v-btn(color='success' @click="openDialog('', -1)") 新增學生
-      v-col(cols='12')
+      .col-12
+        v-btn(color='blue darken-4' @click="openDialog('', -1)") 新增學生
+      .col-12
         v-table
           thead
             tr
@@ -35,22 +35,22 @@
             .text-h5 {{form._id.length > 0 ? '編輯學生' : '新增學生' }}
           v-card-text
             v-container
-              v-row
-                v-col(cols='12')
+              .row
+                .col-12
                   v-text-field(v-model='form.studentId' label='學號' :rules='[rules.required]'  variant="outlined"  counter="8" maxlength="8")
-                v-col(cols='12')
+                .col-12
                   v-text-field(v-model='form.personalId' label='身份證字號' :rules='[rules.required]'  variant="outlined" counter="10" maxlength="10")
-                v-col(cols='12')
+                .col-12
                   v-text-field(v-model='form.name' label='姓名' :rules='[rules.required]'  variant="outlined")
-                v-col(cols='12' md='6')
+                .col-12.col-md-6
                   v-text-field( v-model='form.class' label='班級' :rules='[rules.required]'  variant="outlined")
-                v-col(cols='12' md='6')
+                .col-12.col-md-6
                   v-text-field(v-model='form.phone' label='手機' :rules='[rules.required]'  variant="outlined"  counter="10" maxlength="10")
-                v-col(cols='12' md='6')
+                .col-12.col-md-6
                   v-text-field(v-model='form.residenceAddress' label='戶籍地址' :rules='[rules.required]'  variant="outlined")
-                v-col(cols='12' md='6')
+                .col-12.col-md-6
                   v-text-field(v-model='form.currentAddress' label='聯絡地址' :rules='[rules.required]'  variant="outlined")
-                v-col(cols='12')
+                .col-12
                   v-text-field(v-model='form.email' label='信箱' :rules='[rules.required]'  variant="outlined")
           v-card-actions
             v-spacer

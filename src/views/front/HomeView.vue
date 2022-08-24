@@ -14,14 +14,14 @@
               h5  圖資工程研究所
             li
               h5  網路工程研究所
-
   .container.mt-5.lastnews
     .row
       h1.text-center 最新消息
       v-divider
       .col-12
         v-list
-          router-link(v-if="sliceArticles.length > 0" v-for='(sliceArticle, idx) in sliceArticles' :key='idx' :to="'/article/' + sliceArticle._id" ) {{ new Date(sliceArticle.date).toLocaleDateString() }}  {{ sliceArticle.title }}
+          v-list-item(prepend-icon='mdi-newspaper' v-if="sliceArticles.length > 0" v-for='(sliceArticle, idx) in sliceArticles' :key='idx')
+            router-link(:to="'/article/' + sliceArticle._id" ) {{ new Date(sliceArticle.date).toLocaleDateString() }}  {{ sliceArticle.title }}
           .col(v-else)
             h1.text-center 沒有消息
       v-pagination(
@@ -32,7 +32,6 @@
         prev-icon="mdi-menu-left" 
       )
 </template>
-
 
 <script setup>
 import { reactive, ref, computed } from 'vue'

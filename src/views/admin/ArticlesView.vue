@@ -112,12 +112,15 @@ const form = reactive({
 
 const pageSize = 10
 const currentPage = ref(1)
+
 const sliceArticles = computed (()=>{
   return articles.slice((currentPage.value * pageSize) - pageSize,(currentPage.value * pageSize)).filter(item=>{
+    console.log(search.value)
     const inc = item.title.toLowerCase().includes(search.value.toLowerCase())
     return inc
   })
 })
+
 
 
 const quillOptions = reactive({

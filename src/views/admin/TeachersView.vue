@@ -1,13 +1,13 @@
 <template lang="pug">
 .container.mt-5
   #teachers
-    v-row
-      v-col(cols='12')
+    .row
+      .col-12
         h1.text-center 老師管理
       v-divider
-      v-col(cols='12')
-        v-btn(color='success' @click="openDialog('', -1)") 新增老師
-      v-col(cols='12')
+      .col-12
+        v-btn(color='blue darken-4' @click="openDialog('', -1)") 新增老師
+      .col-12
         v-table
           thead
             tr
@@ -36,24 +36,24 @@
             .text-h5 {{form._id.length > 0 ? '編輯老師' : '新增老師' }}
           v-card-text
             v-container
-              v-row
-                v-col(cols='12' md='4')
+              .row
+                .col-12.col-md-4
                   v-text-field(v-model='form.name' label='老師姓名' :rules='[rules.required]'  variant="outlined")
-                v-col(cols='12' md='4')
+                .col-12.col-md-4
                   v-file-input(v-model='form.image' show-size accept='image/*' label='圖片' :prepend-icon="''"  :rules='[rules.size]'  variant="outlined")
-                v-col(cols='12' md='4')
+                .col-12.col-md-4
                   v-text-field(v-model='form.lab' label='研究室'  variant="outlined")
-                v-col(cols='12' md='4')
+                .col-12.col-md-4
                   v-text-field(v-model='form.telephone' label='電話'  variant="outlined")
-                v-col(cols='12' md='4')
+                .col-12.col-md-4
                   v-text-field(v-model='form.fax' label='傳真'  variant="outlined")
-                v-col(cols='12' md='4')
+                .col-12.col-md-4
                   v-text-field(v-model='form.email' label='信箱' :rules='[rules.required]'  variant="outlined")
-                v-col(cols='12')
+                .col-12
                   v-textarea( v-model='form.experience' label='經歷'  variant="outlined")
-                v-col(cols='12')
+                .col-12
                   v-textarea(v-model='form.proInterest' label='專業興趣'  variant="outlined")
-                v-col(cols='12')
+                .col-12
                   v-textarea(v-model='form.course' label='課程'  variant="outlined")
           v-card-actions
             v-spacer

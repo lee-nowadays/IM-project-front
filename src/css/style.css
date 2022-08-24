@@ -32,12 +32,19 @@
           align-items: center;
 }
 
-.menu .bm-menu {
-  background: #0D47A1;
+.v-btn--size-default {
+  margin: 0 10px;
+  padding: 0;
+}
+
+.menu {
+  position: fixed;
+  top: -30px;
+  right: 90px;
   z-index: 1000;
 }
-.menu .bm-burger-button {
-  z-index: 500;
+.menu .bm-menu {
+  background: #0D47A1;
 }
 .menu .bm-burger-button .bm-burger-bars {
   background: #0D47A1;
@@ -48,6 +55,28 @@
 
 .appbar {
   display: none;
+}
+
+.edit {
+  margin-left: auto;
+  margin-right: 24px;
+  color: #fff !important;
+}
+
+.v-slide-group, .v-slide-group__container {
+  height: 80px !important;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #0D47A1;
+}
+
+.v-tab {
+  color: #fff;
+  height: 60px;
 }
 
 #footer {
@@ -123,6 +152,10 @@
   font-weight: 900;
 }
 
+#lastnews .lastnews h1 {
+  color: #0D47A1;
+  font-weight: bolder;
+}
 #lastnews .lastnews .v-list-item {
   padding: 0 16px;
 }
@@ -137,6 +170,10 @@
 }
 #lastnews .lastnews a:hover {
   background: #E1F5FE;
+}
+#lastnews .v-list-item-icon--start {
+  margin-right: 10px;
+  color: #0D47A1;
 }
 
 #about h1, #about h2 {
@@ -157,6 +194,15 @@
   font-weight: normal;
 }
 
+#calendar h1 {
+  color: #0D47A1;
+  font-weight: bolder;
+}
+
+#teachers h1 {
+  color: #0D47A1;
+  font-weight: bolder;
+}
 #teachers .v-img {
   position: relative;
 }
@@ -190,6 +236,57 @@
 #teachers .teacherDialog {
   height: 100%;
   width: 100%;
+}
+#teachers .v-card .v-card-text {
+  width: 400px;
+}
+
+#contact h1 {
+  color: #0D47A1;
+  font-weight: bolder;
+}
+
+#login h1 {
+  color: #0D47A1;
+  font-weight: bolder;
+}
+
+#studentProfile h1 {
+  color: #0D47A1;
+  font-weight: bolder;
+}
+#studentProfile .v-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 12px;
+}
+#studentProfile .v-form .col-12 {
+  padding: 12px;
+}
+#studentProfile .v-form .col-12:nth-last-child(1) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0;
+}
+#studentProfile .profile {
+  padding: 32px;
+}
+#studentProfile .profile .col-12 {
+  padding: 16px;
+}
+
+#applyLecture h1 {
+  color: #0D47A1;
+  font-weight: bolder;
+}
+
+#passLecture h1 {
+  color: #0D47A1;
+  font-weight: bolder;
 }
 
 @media (min-width: 576px) {
