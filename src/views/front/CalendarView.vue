@@ -11,9 +11,7 @@
 </template>
 
 <style>
-.fc-event-title{
-  text-overflow: ellipsis;
-}
+
 </style>
 
 <script setup>

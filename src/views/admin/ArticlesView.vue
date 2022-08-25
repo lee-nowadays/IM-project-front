@@ -6,7 +6,7 @@
         h1.text-center 文章管理
       v-divider
       .col-12
-        v-btn(color='blue darken-4' @click="openDialog('', -1)").text-white 新增文章
+        v-btn(color='blue darken-4' @click="openDialog('', -1)").text-white.mb-3 新增文章
         v-text-field(
           v-model="search"
           append-icon="mdi-magnify"
@@ -121,7 +121,9 @@ const sliceArticles = computed (()=>{
     return inc
   })
 })
-
+const searchArticles = reactive([])
+searchArticles.push(sliceArticles)
+// console.log(searchArticles)
 
 
 const quillOptions = reactive({

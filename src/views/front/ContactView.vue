@@ -6,9 +6,9 @@
     .row
       v-card
         .col-12
-          v-form(v-model='form.valid' @submit.prevent='submitForm')
+          v-form( v-model='form.valid' @submit.prevent='submitForm' ref='aaa')
             .col-12.col-md-6
-              v-text-field(v-model='form.studentId' label='學號' :rules='rules.studentId' counter='8' maxlength='8'  variant="outlined")
+              v-text-field(v-model='form.studentId' label='學號' :rules='rules.studentId' counter='8' maxlength='8' variant="outlined")
             .col-12.col-md-6
               v-select(v-model='form.question' :items='items' label='問題類型'  variant="outlined")
             .col-12 
@@ -17,7 +17,7 @@
               v-textarea(v-model='form.description' label='問題描述'  variant="outlined")
             .col-12
               v-spacer
-              v-btn(type='submit' color='blue darken-4' :loading='form.submitting').ms-auto 送出
+              v-btn(type='submit' color='blue darken-4' :loading='form.submitting' ).ms-auto.text-white 送出
       .col-12
         h1.text-center 系所位置
       .col-12
@@ -83,10 +83,10 @@ const submitForm = async () => {
     })
   }
   form.submitting = false 
-  form.subject='',
-  form.description='',
-  form.studentId='',
-  form.question='',
+  form.subject=''
+  form.description=''
+  form.studentId=''
+  form.question=''
   aaa.value.reset()
 }
 </script>
