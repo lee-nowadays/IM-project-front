@@ -22,20 +22,23 @@
     justify-content: center;
     align-items: center;
   }
+  .v-btn--size-default{
+    padding: 0;
+    margin: 0 16px;
+  }
 }
-.v-btn--size-default {
-  margin: 0 10px;
-  padding: 0;
-}
+
 .menu{
   position: fixed;
   top: -30px;
   right: 90px;
   z-index: 1000;
+  
   .bm-menu{
-    background: #0D47A1 ;
+    background: #0D47A1;
   }
   .bm-burger-button{
+    background: #fff;
     .bm-burger-bars{
       background: #0D47A1;
     }
@@ -189,6 +192,9 @@
   }
   .v-img{
     position: relative;
+    .overlay{
+      opacity: 1;
+    }
   }
   .v-img:hover{
     .overlay{
@@ -259,6 +265,9 @@
   h1{
     color: #0D47A1;
     font-weight: bolder;
+  }
+  .v-btn{
+    color: #000;
   }
 }
 #passLecture{
@@ -357,6 +366,9 @@
 }
 
 @media (min-width:1440px){
+  .v-toolbar__content{
+    padding-left:200px !important;
+  }
   #mainphoto{
     height: 900px;
     .container-fluid{

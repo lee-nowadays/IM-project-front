@@ -11,9 +11,9 @@
         p(v-html='article.content' ) 
       .col-12(cols='12' v-for='(file, idx) in article.files')
         //- a(:href='file.link' target='_blank')  附件{{ idx + 1 }}
-        v-btn(variant="text" @click='dl(file.link, idx+1)') 附件{{ idx + 1 }}
+        v-btn(color="blue darken-4" variant="outlined" @click='dl(file.link, idx+1)') 附件{{ idx + 1 }}
       .col-12
-        v-btn(v-if="article.category === '講座資訊'" color='primary' @click='addLecture({ lecture:article._id })') 我要報名
+        v-btn(v-if="article.category === '講座資訊'" color='blue darken-4' @click='addLecture({ lecture:article._id })' variant="outlined") 我要報名
       v-overlay.align-center.justify-center(:model-value='!article.post')
         h1.text-black 已下架
 </template>
@@ -58,7 +58,7 @@ const init = async () => {
     article._id = data.article._id
     article.title = data.article.title
     article.content = data.article.content
-    article.image = article.image.length > 0 ? import.meta.env.VITE_API + "/files/" + data.article.image : ''
+    article.image =  import.meta.env.VITE_API + "/files/" + data.article.image 
     article.files = data.article.files.map(file => {
       return {
         name: file,

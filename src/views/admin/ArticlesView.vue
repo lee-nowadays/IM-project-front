@@ -25,16 +25,18 @@
               th 發布狀態
               th(colspan="2") 管理
           tbody
-            tr(v-if='sliceArticles.length > 0' v-for='(article, idx) in sliceArticles' :key='article._id')
+            tr(v-if='sliceArticles.length > 0' v-for='(article, idx) in sliceArticles' :key='article._id' )
               td {{ new Date(article.date).toLocaleDateString() }}
               td {{ article.title }}
               td {{ article.category }}
               td 
                 v-checkbox(@click='postArticle(article._id, idx)' :model-value='article.post')
               td 
-                v-btn(color='blue darken-4' @click='openDialog(article._id)' variant="outlined") 編輯
+                v-btn(v-if='currentPage === 1' color='blue darken-4' @click='openDialog(article._id,idx)' variant="outlined") 編輯
+                v-btn(v-else color='blue darken-4' @click='openDialog(article._id,idx + (currentPage - 1) * pageSize)' variant="outlined") 編輯
               td
-                v-btn(color='error' @click='del(article._id,idx)' variant="outlined") 刪除
+                v-btn(v-if='currentPage === 1' color='error' @click='del(article._id,idx)' variant="outlined") 刪除
+                v-btn(v-else color='error' @click='del(article._id,idx + (currentPage - 1) * pageSize)' variant="outlined") 刪除
             tr(v-else)
               td.text-center(colspan="7") 沒有文章
     v-dialog(v-model='form.dialog' scrollable)
@@ -86,7 +88,7 @@
 <script setup>
 import { QuillEditor } from '@vueup/vue-quill'
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
-import { reactive, ref, computed } from 'vue'
+import { reactive, ref, computed, watch } from 'vue'
 import Swal from 'sweetalert2'
 import { apiAuth } from '@/plugins/axios'
 
@@ -115,7 +117,6 @@ const currentPage = ref(1)
 
 const sliceArticles = computed (()=>{
   return articles.slice((currentPage.value * pageSize) - pageSize,(currentPage.value * pageSize)).filter(item=>{
-    console.log(search.value)
     const inc = item.title.toLowerCase().includes(search.value.toLowerCase())
     return inc
   })
@@ -139,15 +140,14 @@ const rules = reactive({
 
 
 
-const openDialog = (_id) => {
-  const idx = sliceArticles.value.findIndex(item => item._id === _id)
+const openDialog = (_id,idx) => {
   form._id = _id
   if (idx > -1) {
-    form.title = sliceArticles.value[idx].title
-    form.content = sliceArticles.value[idx].content
-    form.category = sliceArticles.value[idx].category
-    form.post = sliceArticles.value[idx].post
-    form.date = sliceArticles.value[idx].date
+    form.title = articles[idx].title
+    form.content = articles[idx].content
+    form.category = articles[idx].category
+    form.post = articles[idx].post
+    form.date = articles[idx].date
   } else {
     form.title = ''
     form.content = ''
@@ -168,6 +168,7 @@ const del = async (_id,idx) => {
   await apiAuth.delete('/articles/'+ _id)
   articles.splice(idx, 1)
 }
+
 
 const postArticle = async (_id, idx) => {
   try {

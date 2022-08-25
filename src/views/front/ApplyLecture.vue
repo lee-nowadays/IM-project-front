@@ -19,7 +19,7 @@
               td  {{ item.lecture.title }}
               td  報名成功
               td
-                v-btn(color='blue darken-4' @click='deleteLecture(idx, 0)') 取消報名
+                v-btn(color='blue darken-4' @click='deleteLecture(idx, 0)').cancelApply 取消報名
             tr(v-else)
               td.text-center(colspan="4") 沒有報名記錄
 </template>

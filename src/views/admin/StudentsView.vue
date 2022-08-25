@@ -23,9 +23,11 @@
               td {{ student.name }}
               td {{ student.phone }}
               td 
-                v-btn(color='blue darken-4' @click='openDialog(student._id, idx)' variant="outlined") 編輯
+                v-btn(v-if='currentPage === 1' color='blue darken-4' @click='openDialog(student._id,idx)' variant="outlined") 編輯
+                v-btn(v-else color='blue darken-4' @click='openDialog(student._id,idx + (currentPage - 1) * pageSize)' variant="outlined") 編輯
               td
-                v-btn(color='error' @click='del(student._id,idx)' variant="outlined") 刪除
+                v-btn(v-if='currentPage === 1' color='error' @click='del(student._id,idx)' variant="outlined") 刪除
+                v-btn(v-else color='error' @click='del(student._id,idx + (currentPage - 1) * pageSize)' variant="outlined") 刪除
             tr(v-else)
               td.text-center(colspan="5") 沒有學生             
     v-dialog(v-model='form.dialog' scrollable)

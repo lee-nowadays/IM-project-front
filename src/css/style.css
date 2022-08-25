@@ -31,10 +31,9 @@
       -ms-flex-align: center;
           align-items: center;
 }
-
-.v-btn--size-default {
-  margin: 0 10px;
+.v-app-bar.v-toolbar .v-btn--size-default {
   padding: 0;
+  margin: 0 16px;
 }
 
 .menu {
@@ -45,6 +44,9 @@
 }
 .menu .bm-menu {
   background: #0D47A1;
+}
+.menu .bm-burger-button {
+  background: #fff;
 }
 .menu .bm-burger-button .bm-burger-bars {
   background: #0D47A1;
@@ -206,6 +208,9 @@
 #teachers .v-img {
   position: relative;
 }
+#teachers .v-img .overlay {
+  opacity: 1;
+}
 #teachers .v-img:hover .overlay {
   opacity: 1;
 }
@@ -282,6 +287,9 @@
 #applyLecture h1 {
   color: #0D47A1;
   font-weight: bolder;
+}
+#applyLecture .v-btn {
+  color: #000;
 }
 
 #passLecture h1 {
@@ -370,6 +378,9 @@
   }
 }
 @media (min-width: 1440px) {
+  .v-toolbar__content {
+    padding-left: 200px !important;
+  }
   #mainphoto {
     height: 900px;
   }

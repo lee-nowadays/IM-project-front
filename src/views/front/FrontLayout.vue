@@ -8,10 +8,10 @@ Menu.menu
   v-list-item(to='/contact') 聯絡我們
   v-list-item(v-if='isLogin && isAdmin' to='/admin') 管理
   v-list-item(v-if='!isLogin' to='/login') 登入
-  v-list-item(:to="'/student/' + student._id") 個人資料
-  v-list-item(to='/applyLecture') 查看報名講座
-  v-list-item(to='/passLecture') 歷史報名講座
-  v-list-item(@click='logout') 登出
+  v-list-item(v-if='isLogin' :to="'/student/' + student._id") 個人資料
+  v-list-item(v-if='isLogin' to='/applyLecture') 查看報名講座
+  v-list-item(v-if='isLogin' to='/passLecture') 歷史報名講座
+  v-list-item(v-if='isLogin' @click='logout') 登出
 v-app-bar.appbar
   v-avatar.me-3
     v-img(src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/ROC_Workforce_Development_Agency_Logo.svg/640px-ROC_Workforce_Development_Agency_Logo.svg.png')

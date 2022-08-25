@@ -21,9 +21,11 @@
             td {{ new Date(calendar.startDate).toLocaleDateString() }}
             td {{ new Date(calendar.endDate).toLocaleDateString() }}
             td 
-              v-btn(color='blue darken-4' @click='openDialog(calendar._id, idx)' variant="outlined") 編輯
+              v-btn(v-if='currentPage === 1' color='blue darken-4' @click='openDialog(calendar._id,idx)' variant="outlined") 編輯
+              v-btn(v-else color='blue darken-4' @click='openDialog(calendar._id,idx + (currentPage - 1) * pageSize)' variant="outlined") 編輯
             td
-              v-btn(color='error' @click='del(calendar._id,idx)' variant="outlined") 刪除
+              v-btn(v-if='currentPage === 1' color='error' @click='del(calendar._id,idx)' variant="outlined") 刪除
+              v-btn(v-else color='error' @click='del(calendar._id,idx + (currentPage - 1) * pageSize)' variant="outlined") 刪除
           tr(v-else)
             td.text-center(colspan="5") 
               h3.mt-3 沒有行事曆             
