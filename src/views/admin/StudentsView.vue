@@ -6,7 +6,7 @@
         h1.text-center 學生管理
       v-divider
       .col-12
-        v-btn(color='blue darken-4' @click="openDialog('', -1)") 新增學生
+        v-btn(color='blue darken-4' @click="openDialog('', -1)").text-white 新增學生
       .col-12
         v-table
           thead

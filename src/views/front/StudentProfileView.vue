@@ -32,7 +32,7 @@
               .col-12
                 v-spacer
                 v-btn(color='blue darken-4' @click='closeForm()' :disabled='form.submitting' variant="outlined").me-3 取消
-                v-btn(:disabled='form.password !== form.confirmpassword' type='submit' color='blue darken-4' :loading='form.submitting') 確定
+                v-btn(:disabled='form.password !== form.confirmpassword' type='submit' color='blue darken-4' :loading='form.submitting').text-white 確定
           .col-12(cols='12' v-else)
             .row
               .col-12.col-md-6 學號：{{ student.studentId }}

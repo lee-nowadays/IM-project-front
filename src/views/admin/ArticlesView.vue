@@ -6,7 +6,7 @@
         h1.text-center 文章管理
       v-divider
       .col-12
-        v-btn(color='blue darken-4' @click="openDialog('', -1)") 新增文章
+        v-btn(color='blue darken-4' @click="openDialog('', -1)").text-white 新增文章
         v-text-field(
           v-model="search"
           append-icon="mdi-magnify"

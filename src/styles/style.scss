@@ -1,3 +1,7 @@
+h1{
+  color: #0D47A1;
+  font-weight: bolder;
+}
 .v-main{
   padding: 0 !important;
 }
@@ -28,6 +32,9 @@
   }
 }
 
+#home{
+  margin-top: 50px;
+}
 .menu{
   position: fixed;
   top: -30px;
@@ -134,10 +141,6 @@
 
 #lastnews{
   .lastnews{
-    h1{
-      color: #0D47A1;
-      font-weight: bolder;
-    }
     .v-list-item{
       padding:0 16px
     }
@@ -179,17 +182,7 @@
     font-weight: normal;
   }
 }
-#calendar{
-  h1{
-    color: #0D47A1;
-    font-weight: bolder;
-  }
-}
 #teachers{
-  h1{
-    color: #0D47A1;
-    font-weight: bolder;
-  }
   .v-img{
     position: relative;
     .overlay{
@@ -225,23 +218,7 @@
     width: 400px ;
   }
 }
-#contact{
-  h1{
-    color: #0D47A1;
-    font-weight: bolder;
-  }
-}
-#login{
-  h1{
-    color: #0D47A1;
-    font-weight: bolder;
-  }
-}
 #studentProfile{
-  h1{
-    color: #0D47A1;
-    font-weight: bolder;
-  }
   .v-form{
     display: flex;
     flex-wrap: wrap;
@@ -261,25 +238,14 @@
     }
   }
 }
-#applyLecture{
-  h1{
-    color: #0D47A1;
-    font-weight: bolder;
-  }
-  .v-btn{
-    color: #000;
-  }
+.text-white {
+  color: #fff !important;
 }
-#passLecture{
-  h1{
-    color: #0D47A1;
-    font-weight: bolder;
-  }
-}
+
+
+
 @media (min-width:576px){
-  #home{
-    // margin-top: 35px;
-  }
+  
   #mainphoto{
     height: 300px;
     .container-fluid{

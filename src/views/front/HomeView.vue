@@ -22,8 +22,12 @@
         v-list
           v-list-item(prepend-icon='mdi-newspaper' v-if="sliceArticles.length > 0" v-for='(sliceArticle, idx) in sliceArticles' :key='idx')
             router-link(:to="'/article/' + sliceArticle._id" ) {{ new Date(sliceArticle.date).toLocaleDateString() }}  {{ sliceArticle.title }}
-          .col(v-else)
-            h1.text-center 沒有消息
+          .col-12(v-else)
+              h1.mx-auto(v-if='loaded') 沒有消息
+              .col-12(v-else).mx-auto
+                svg( xmlns='http://www.w3.org/2000/svg' xlink='http://www.w3.org/1999/xlink' style='margin:auto;background:#fff;display:block;' width='200px' height='200px' viewBox='0 0 100 100' preserveAspectRatio='xMidYMid')
+                  circle(cx='50' cy='50' fill='none' stroke='#0D47A1' stroke-width='10' r='35' stroke-dasharray='164.93361431346415 56.97787143782138')
+                    animateTransform(attributeName='transform' type='rotate' repeatCount='indefinite' dur='1s' values='0 50 50;360 50 50' keyTimes='0;1')
       v-pagination(
         v-model='currentPage'
         :length="Math.ceil(articles.length / pageSize) " 
@@ -38,7 +42,7 @@ import { reactive, ref, computed } from 'vue'
 import Swal from 'sweetalert2'
 import { api } from '@/plugins/axios'
 
-
+const loaded = ref(false)
 const articles = reactive([])
 
 const pageSize = 10
@@ -67,6 +71,7 @@ const init = async () => {
       text:'伺服器錯誤'
     })
   }
+  loaded.value = true
 }
 init()
 </script>
