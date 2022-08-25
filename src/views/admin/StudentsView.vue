@@ -36,7 +36,7 @@
           v-card-title
             .text-h5 {{form._id.length > 0 ? '編輯學生' : '新增學生' }}
           v-card-text
-            v-container
+            .container
               .row
                 .col-12
                   v-text-field(v-model='form.studentId' label='學號' :rules='[rules.required]'  variant="outlined"  counter="8" maxlength="8")
@@ -57,7 +57,7 @@
           v-card-actions
             v-spacer
             v-btn(color='error' @click='form.dialog = false' :disabled='form.submitting') 取消
-            v-btn(type='submit' color='primary' :loading='form.submitting') 確定
+            v-btn(type='submit' color='blue darken-4' :loading='form.submitting') 確定
     v-pagination(
       v-model='currentPage'
       :length="Math.ceil(students.length / pageSize) " 

@@ -1,13 +1,13 @@
 <template lang="pug">
 .container.mt-5
   #calendars
-    v-col(cols='12')
+    .col-12
       h1.text-center 行事曆管理
     v-divider
     FullCalendar(:options="calendarOptions") 
-  v-row.mt-5
+  .row.mt-5
     v-divider
-    v-col(cols='12')
+    .col-12
       v-table
         thead
           tr
@@ -35,14 +35,14 @@
         v-card-title
           .text-h5 {{form._id.length > 0 ? '編輯行事曆' : '新增行事曆' }}
         v-card-text
-          v-container
-            v-row
-              v-col(cols='12')
+          .container
+            .row
+              .col-12
                 v-text-field(v-model='form.title' label='標題' :rules='[rules.required]'  variant="outlined")
         v-card-actions
           v-spacer
           v-btn(color='error' @click='form.dialog = false' :disabled='form.submitting') 取消
-          v-btn(type='submit' color='primary' :loading='form.submitting') 確定
+          v-btn(type='submit' color='blue darken-4' :loading='form.submitting') 確定
   v-dialog(v-model="dialog").display-flex.justify-content-center
       v-card
         v-card-text {{ text }}

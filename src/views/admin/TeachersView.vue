@@ -1,6 +1,6 @@
 <template lang="pug">
 .container.mt-5
-  #teachers
+  #adminTeachers
     .row
       .col-12
         h1.text-center 老師管理
@@ -37,7 +37,7 @@
           v-card-title
             .text-h5 {{form._id.length > 0 ? '編輯老師' : '新增老師' }}
           v-card-text
-            v-container
+            .container
               .row
                 .col-12.col-md-4
                   v-text-field(v-model='form.name' label='老師姓名' :rules='[rules.required]'  variant="outlined")
@@ -60,7 +60,7 @@
           v-card-actions
             v-spacer
             v-btn(color='error' @click='form.dialog = false' :disabled='form.submitting') 取消
-            v-btn(type='submit' color='primary' :loading='form.submitting') 確定
+            v-btn(type='submit' color='blue darken-4' :loading='form.submitting') 確定
     v-pagination(
       v-model='currentPage'
       :length="Math.ceil(teachers.length / pageSize) " 

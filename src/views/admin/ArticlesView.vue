@@ -45,27 +45,27 @@
           v-card-title
             .text-h5 {{ form._id.length > 0 ? '編輯文章' : '新增文章' }}
           v-card-text
-            v-container
+            .container
               .row
-                .col-12(cols='12')
+                .col-12
                   v-text-field(v-model='form.title' label='標題' :rules='[rules.required]'  variant="outlined")
                 .col-12.quill
                   QuillEditor(:options="quillOptions" toolbar='full' v-model:content='form.content' contentType="html")
                   //- v-textarea(v-model='form.content' label='內文' :rules='[rules.required]'  variant="outlined")
-                .col-12.cols-md-6
+                .col-12.col-md-6
                   v-file-input(v-model='form.image' show-size accept='image/*' label='圖片' :prepend-icon="''" :rules='[rules.size]'  variant="outlined")
-                .col-12.cols-md-6
+                .col-12.col-md-6
                   v-file-input(type='file' v-model='form.files' multiple show-size accept='.doc,.docx,.pdf'  label='附件' :prepend-icon="''"  variant="outlined")
-                .col-12.cols-md-6
+                .col-12.col-md-6
                   v-select(:items='categories' v-model='form.category' label='分類' :rules='[rules.required]'  variant="outlined")
-                .col-12.cols-md-6
+                .col-12.col-md-6
                   v-text-field(v-model='form.date' type="date" label='日期' :rules='[rules.required]'  variant="outlined")
-                .col-12.cols-md-6
+                .col-12.col-md-6
                   v-checkbox(v-model='form.post' label='發布')
           v-card-actions
             v-spacer
             v-btn(color='error' @click='form.dialog = false' :disabled='form.submitting') 取消
-            v-btn(type='submit' color='primary' :loading='form.submitting') 確定
+            v-btn(type='submit' color='blue darken-4' :loading='form.submitting') 確定
     v-pagination(
       v-model='currentPage'
       :length="Math.ceil(articles.length / pageSize) " 

@@ -1,6 +1,8 @@
 <template lang="pug">
-Menu.menu
-  v-list-item(to='/') 回首頁
+Menu(right).menu
+  v-list-item(to='/') 首頁
+    v-avatar.ms-auto
+      v-img(src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/ROC_Workforce_Development_Agency_Logo.svg/640px-ROC_Workforce_Development_Agency_Logo.svg.png')
   v-list-item(to='/lastnews') 最新消息
   v-list-item(to='/about') 關於我們
   v-list-item(to='/calendar') 行事曆

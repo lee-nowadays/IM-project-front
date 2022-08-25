@@ -20,7 +20,7 @@
       v-divider
       .col-12
         v-list
-          v-list-item(prepend-icon='mdi-newspaper' v-if="sliceArticles.length > 0" v-for='(sliceArticle, idx) in sliceArticles' :key='idx')
+          v-list-item(prepend-icon='mdi-book-open-page-variant-outline' v-if="sliceArticles.length > 0" v-for='(sliceArticle, idx) in sliceArticles' :key='idx')
             router-link(:to="'/article/' + sliceArticle._id" ) {{ new Date(sliceArticle.date).toLocaleDateString() }}  {{ sliceArticle.title }}
           .col-12(v-else)
               h1.mx-auto(v-if='loaded') 沒有消息
