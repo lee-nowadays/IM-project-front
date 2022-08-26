@@ -8,7 +8,7 @@
         .col-12
           v-form( v-model='form.valid' @submit.prevent='submitForm' ref='aaa')
             .col-12.col-md-6
-              v-text-field(v-model='form.studentId' label='學號' :rules='rules.studentId' counter='8' maxlength='8' variant="outlined")
+              v-text-field(v-model='form.studentId' label='學號'  counter='8' maxlength='8' variant="outlined")
             .col-12.col-md-6
               v-select(v-model='form.question' :items='items' label='問題類型'  variant="outlined")
             .col-12 
@@ -56,13 +56,6 @@ const form = reactive({
   submitting : false,
 })
 
-const rules = reactive({
-  studentId: [
-    v => !!v || '學號必填',
-    v => /^[0-9]+$/.test(v) || '學號只有數字',
-    v => (v.length >= 8 && v.length <= 8) || '學號為8位數'
-  ]
-})
 
 const submitForm = async () => {
   if (!form.valid) return
@@ -83,10 +76,6 @@ const submitForm = async () => {
     })
   }
   form.submitting = false 
-  form.subject=''
-  form.description=''
-  form.studentId=''
-  form.question=''
   aaa.value.reset()
 }
 </script>

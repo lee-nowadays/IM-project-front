@@ -1,6 +1,6 @@
 <template lang="pug">
 #lastnews.mt-5.pt-5
-  .container.lastnews
+  .container
     .row 
       .col-12(v-if='tab === "最新消息"')
         h1.text-center.mb-5 最新消息

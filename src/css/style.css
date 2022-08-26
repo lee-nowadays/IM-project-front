@@ -80,6 +80,11 @@ h1 {
   display: none;
 }
 
+.studentlist .v-list-item-title {
+  color: #0D47A1;
+  font-weight: 800;
+}
+
 .edit {
   margin-left: auto;
   margin-right: 24px;
@@ -128,14 +133,15 @@ h1 {
   font-weight: bold;
   height: 100%;
   padding: 1rem 0;
-  color: #0D47A1;
+  color: #424242;
   text-decoration: none;
 }
 #home .lastnews .v-list a:hover {
+  color: #0D47A1;
   background: #E1F5FE;
 }
-#home .v-window {
-  overflow: hidden;
+#home .v-icon {
+  margin-right: 10px;
 }
 
 #mainphoto {
@@ -176,24 +182,31 @@ h1 {
   font-weight: 900;
 }
 
-#lastnews .lastnews .v-list-item {
+#lastnews .v-list-item {
   padding: 0 16px;
 }
-#lastnews .lastnews a {
+#lastnews a {
   display: block;
   width: 100%;
   font-weight: bold;
   height: 100%;
   padding: 1rem 0;
-  color: #0D47A1;
+  color: #616161;
   text-decoration: none;
 }
-#lastnews .lastnews a:hover {
+#lastnews a:hover {
+  color: #0D47A1;
   background: #E1F5FE;
+}
+#lastnews .col-12 {
+  padding: 0;
 }
 #lastnews .v-list-item-icon--start {
   margin-right: 10px;
   color: #0D47A1;
+}
+#lastnews .v-tab .v-btn__content {
+  font-size: 1.2rem;
 }
 
 #about h1, #about h2 {
@@ -327,9 +340,6 @@ h1 {
   }
   .appbar {
     display: block;
-  }
-  #home {
-    margin-top: 50px;
   }
   #mainphoto {
     height: 500px;

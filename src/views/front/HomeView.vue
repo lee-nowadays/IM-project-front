@@ -3,7 +3,7 @@
   #mainphoto
     .container-fluid
       .row
-        .overlay 
+        .overlay.animate__animated.animate__fadeInLeft
           p  Department of 
           p  Information Management
           p  資訊管理學系

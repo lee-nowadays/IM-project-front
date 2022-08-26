@@ -31,7 +31,7 @@ v-app-bar.appbar
     v-menu(open-on-hover)
       template(#activator="{ props }")
         v-btn(v-if='isLogin' icon='mdi-account' v-bind="props")
-      v-list
+      v-list.studentlist
         v-list-item(:to="'/student/' + student._id")
           v-list-item-title 個人資料
         v-list-item(to='/applyLecture')
@@ -58,13 +58,47 @@ v-main
         p.text-center Copyright &copy; 2022 . All rights reserved.
 
 </template>
+<style>
+.box{
+  width: 300px;
+  height: 300px;
+  background: #f00;
+}
+
+</style>
 <script setup>
+import { onMounted } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useStudentStore } from '@/stores/student'
 import { Slide as Menu } from 'vue3-burger-menu'
-
+import { gsap } from 'gsap'
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 const student = useStudentStore()
 const { logout } = student
 const { isLogin, isAdmin } = storeToRefs(student)
+
+gsap.registerPlugin(ScrollToPlugin, ScrollTrigger)
+
+onMounted(()=>{
+  gsap.from('.v-toolbar ',{
+    yPercent:-100,
+    duration:0.1,
+    scrollTrigger:{
+      // 沒有 trigger 觸發目標，目標會變成整份文件滾動監控
+      start:'50px 50px',
+      end:()=> '+=' + document.documentElement.scrollHeight,
+      onEnter(self){
+        self.animation.play()
+      },
+      onUpdate(self){
+        self.direction === -1 ? self.animation.play() : self.animation.reverse() // -1 往上時正向播放，否則 1 在往下時反向播放
+      },
+      // markers:true
+    },
+  })
+})
+
+
 
 </script>
