@@ -16,7 +16,7 @@
               h5  網路工程研究所
   .container.mt-5.lastnews
     .row
-      h1.text-center 最新消息
+      h1.text-center 所有消息
       v-divider
       .col-12
         v-list
@@ -38,9 +38,27 @@
 </template>
 
 <script setup>
-import { reactive, ref, computed } from 'vue'
+import { reactive, ref, computed, onMounted } from 'vue'
 import Swal from 'sweetalert2'
 import { api } from '@/plugins/axios'
+import { gsap } from 'gsap'
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+gsap.registerPlugin(ScrollToPlugin, ScrollTrigger)
+
+onMounted(()=>{
+  gsap.from('.lastnews ',{
+    y:300  ,
+    duration:1,
+    scrollTrigger:{
+      // 沒有 trigger 觸發目標，目標會變成整份文件滾動監控
+      start:'40% center',
+      end:'bottom bottom',
+      // markers:true
+    },
+    ease:'sine.out',
+  })
+})
 
 const loaded = ref(false)
 const articles = reactive([])
