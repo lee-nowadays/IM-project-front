@@ -15,7 +15,7 @@
           svg( xmlns='http://www.w3.org/2000/svg' xlink='http://www.w3.org/1999/xlink' style='margin:auto;background:#fff;display:block;' width='200px' height='200px' viewBox='0 0 100 100' preserveAspectRatio='xMidYMid')
             circle(cx='50' cy='50' fill='none' stroke='#0D47A1' stroke-width='10' r='35' stroke-dasharray='164.93361431346415 56.97787143782138')
               animateTransform(attributeName='transform' type='rotate' repeatCount='indefinite' dur='1s' values='0 50 50;360 50 50' keyTimes='0;1')
-    v-dialog(v-model='dialog' transition="dialog-bottom-transition" scrollable max-height='1080'  max-width='1920').teacherDialog
+    v-dialog(v-model='dialog' transition="dialog-bottom-transition" scrollable)
       v-card.teacherCard
         .row 
           .col-12.col-lg-6

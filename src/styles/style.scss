@@ -240,14 +240,10 @@ h1{
     justify-content: center;
     align-items: end;
     transition: 0.5s;
-    background:linear-gradient(0deg, rgba(0,0,0,1), rgba(0,0,0,0.3), transparent)  ;
-  }
-  .teacherDialog{
-    height: 100%;
-    width: 100%;
-  }
-  .v-card .v-card-text{
-    width: 400px ;
+    background:linear-gradient(0deg, rgba(0,0,0,1), rgba(0,0,0,0.3), transparent);
+    .v-btn__content{
+      white-space: normal;
+    }
   }
 }
 #contact{
@@ -290,7 +286,12 @@ h1{
   min-height: 300px;
 }
 .v-input__details{
-  display: none;
+  display: none !important;
+}
+#contacts{
+  .v-card .v-card-subtitle{
+    color: #0D47A1 !important;
+  }
 }
 
 @media (min-width:576px){
@@ -328,14 +329,6 @@ h1{
       }
     }
   }
-  .teacher{
-    .teacherDialog{
-      h2{
-        font-size: 5rem ;
-      }
-    }
-  }
-  
 }
 
 @media (min-width:992px){

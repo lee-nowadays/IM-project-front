@@ -52,7 +52,7 @@ onMounted(()=>{
     duration:0.5,
     scrollTrigger:{
       // 沒有 trigger 觸發目標，目標會變成整份文件滾動監控
-      start:'40% center',
+      start:'30% 50%',
       end:'bottom bottom',
       // markers:true
     },

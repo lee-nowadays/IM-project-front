@@ -17,7 +17,6 @@ const router = createRouter({
           name:'home',
           component:HomeView,
           meta:{
-            transition:'fade',
             title:'泰山資訊管理系',
             login: false,
             admin: false
@@ -28,7 +27,6 @@ const router = createRouter({
           name:'login',
           component:()=>import('@/views/front/LoginView.vue'),
           meta:{
-            transition:'fade',
             title:'泰山資訊管理系 | 登入',
             login: false,
             admin: false
@@ -39,7 +37,6 @@ const router = createRouter({
           name:'lastnews',
           component:()=>import('@/views/front/LastNewsView.vue'),
           meta:{
-            transition:'fade',
             title:'泰山資訊管理系 | 最新消息',
             login: false,
             admin: false
@@ -50,7 +47,6 @@ const router = createRouter({
           name:'about',
           component:()=>import('@/views/front/AboutView.vue'),
           meta:{
-            transition:'fade',
             title:'泰山資訊管理系 | 關於我們',
             login: false,
             admin: false
@@ -61,7 +57,6 @@ const router = createRouter({
           name:'calendar',
           component:()=>import('@/views/front/CalendarView.vue'),
           meta:{
-            transition:'fade',
             title:'泰山資訊管理系 | 行事曆',
             login: false,
             admin: false
@@ -72,7 +67,6 @@ const router = createRouter({
           name:'teachers',
           component:()=>import('@/views/front/TeachersView.vue'),
           meta:{
-            transition:'fade',
             title:'泰山資訊管理系 | 師資介紹',
             login: false,
             admin: false
@@ -83,7 +77,6 @@ const router = createRouter({
           name:'contact',
           component:()=>import('@/views/front/ContactView.vue'),
           meta:{
-            transition:'fade',
             title:'泰山資訊管理系 | 聯絡我們',
             login: false,
             admin: false
@@ -94,7 +87,6 @@ const router = createRouter({
           name:'applylecture',
           component:()=>import('@/views/front/ApplyLecture.vue'),
           meta:{
-            transition:'fade',
             title:'泰山資訊管理系 | 報名講座',
             login: true,
             admin: false
@@ -105,7 +97,6 @@ const router = createRouter({
           name:'passlecture',
           component:()=>import('@/views/front/PassLecture.vue'),
           meta:{
-            transition:'fade',
             title:'泰山資訊管理系 | 歷史講座',
             login: true,
             admin: false
@@ -116,7 +107,6 @@ const router = createRouter({
           name:'article',
           component:()=>import('@/views/front/ArticleView.vue'),
           meta:{
-            transition:'fade',
             title:'泰山資訊管理系',
             login: false,
             admin: false
@@ -127,7 +117,6 @@ const router = createRouter({
           name:'student',
           component:()=>import('@/views/front/StudentProfileView.vue'),
           meta:{
-            transition:'fade',
             title:'泰山資訊管理系',
             login: true,
             admin: false
@@ -144,7 +133,6 @@ const router = createRouter({
           name: 'admin-home',
           component: () => import('@/views/admin/HomeView.vue'),
           meta: {
-            transition:'fade',
             title: '泰山資訊管理系 | 管理',
             login: true,
             admin: true
@@ -155,7 +143,6 @@ const router = createRouter({
           name: 'admin-calendar',
           component: () => import('@/views/admin/CalendarsView.vue'),
           meta: {
-            transition:'fade',
             title: '泰山資訊管理系 | 行事曆管理',
             login: true,
             admin: true
@@ -166,7 +153,6 @@ const router = createRouter({
           name: 'admin-students',
           component: () => import('@/views/admin/StudentsView.vue'),
           meta: {
-            transition:'fade',
             title: '泰山資訊管理系 | 學生管理',
             login: true,
             admin: true
@@ -177,7 +163,6 @@ const router = createRouter({
           name: 'admin-teachers',
           component: () => import('@/views/admin/TeachersView.vue'),
           meta: {
-            transition:'fade',
             title: '泰山資訊管理系 | 老師管理',
             login: true,
             admin: true
@@ -188,8 +173,17 @@ const router = createRouter({
           name: 'admin-articles',
           component: () => import('@/views/admin/ArticlesView.vue'),
           meta: {
-            transition:'fade',
             title: '泰山資訊管理系 | 文章管理',
+            login: true,
+            admin: true
+          }
+        },
+        {
+          path: 'contacts',
+          name: 'admin-contacts',
+          component: () => import('@/views/admin/ContactsView.vue'),
+          meta: {
+            title: '泰山資訊管理系 | 聯絡管理',
             login: true,
             admin: true
           }
@@ -201,7 +195,6 @@ const router = createRouter({
       name: '404',
       component: NotFoundView,
       meta: {
-        transition:'fade',
         title: '泰山資訊管理系 | 404',
         login: false,
         admin: false

@@ -175,15 +175,6 @@ const postArticle = async (_id, idx) => {
   }
   
 }
-// if (articles[idx].post) {
-//     form._id = _id
-//     articles[idx].post = false
-//     form.post = false
-//   } else {
-//     form._id = _id
-//     articles[idx].post = true
-//     form.post = true
-//   }
 
 const submitForm = async () => {
   if (!form.valid) return
