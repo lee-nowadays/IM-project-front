@@ -17,7 +17,7 @@ Menu(right).menu
 v-app-bar.appbar
   v-avatar.me-3
     v-img(src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/ROC_Workforce_Development_Agency_Logo.svg/640px-ROC_Workforce_Development_Agency_Logo.svg.png')
-  v-app-bar-title 泰山資訊管理系
+  v-app-bar-title 資訊管理學系
   //- #append 是 v-slot
   template(#append)
     v-btn(exact to='/') 回首頁
@@ -81,7 +81,7 @@ const { isLogin, isAdmin } = storeToRefs(student)
 gsap.registerPlugin(ScrollToPlugin, ScrollTrigger)
 
 onMounted(()=>{
-  gsap.from('.v-toolbar ',{
+  gsap.from('.appbar ',{
     yPercent:-100,
     duration:0.1,
     scrollTrigger:{
@@ -95,7 +95,7 @@ onMounted(()=>{
         self.direction === -1 ? self.animation.play() : self.animation.reverse() // -1 往上時正向播放，否則 1 在往下時反向播放
       },
       // markers:true
-    },
+    }
   })
 })
 

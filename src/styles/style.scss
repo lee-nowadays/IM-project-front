@@ -105,7 +105,7 @@ h1{
 }
 
 #home{
-
+  margin-top: 50px;
   .v-list-item{
     padding:0px;
     color: #0D47A1;
@@ -320,6 +320,9 @@ h1{
 }
 
 @media (min-width:992px){
+  #home{
+    margin-top: 0;
+  }
   .menu{
     display: none;
   }

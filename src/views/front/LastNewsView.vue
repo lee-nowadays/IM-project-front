@@ -10,9 +10,9 @@
         h1.text-center.mb-5 競賽資訊
       .col-12
         v-tabs(v-model='tab')
-          v-tab(value="最新消息") 最新消息
-          v-tab(value="講座資訊") 講座資訊
-          v-tab(value="競賽資訊") 競賽資訊
+          v-tab(value="最新消息" @click="resetPage") 最新消息
+          v-tab(value="講座資訊" @click="resetPage") 講座資訊
+          v-tab(value="競賽資訊" @click="resetPage") 競賽資訊
       .col-12
         v-window(v-model='tab')
           v-window-item(value='最新消息')
@@ -21,7 +21,7 @@
                 v-list-item(prepend-icon='mdi-book-open-page-variant-outline' v-for='article in sliceArticles')
                   router-link(:to="'/article/' + article._id" ) {{ new Date(article.date).toLocaleDateString() }}  {{ article.title }}
             .col-12(v-else)
-              h1.mx-auto(v-if='loaded') 沒有消息
+              h1.text-center.mt-3(v-if='loaded') 沒有消息
               .col-12(v-else).mx-auto
                 svg( xmlns='http://www.w3.org/2000/svg' xlink='http://www.w3.org/1999/xlink' style='margin:auto;background:#fff;display:block;' width='200px' height='200px' viewBox='0 0 100 100' preserveAspectRatio='xMidYMid')
                   circle(cx='50' cy='50' fill='none' stroke='#0D47A1' stroke-width='10' r='35' stroke-dasharray='164.93361431346415 56.97787143782138')
@@ -32,7 +32,7 @@
                 v-list-item(prepend-icon='mdi-book-open-page-variant-outline' v-for='article in sliceArticles')
                   router-link(:to="'/article/' + article._id" ) {{ new Date(article.date).toLocaleDateString() }}  {{ article.title }}
             .col-12(v-else)
-              h1.mx-auto(v-if='loaded') 沒有講座
+              h1.text-center.mt-3(v-if='loaded') 沒有講座
               .col-12(v-else).mx-auto
                 svg( xmlns='http://www.w3.org/2000/svg' xlink='http://www.w3.org/1999/xlink' style='margin:auto;background:#fff;display:block;' width='200px' height='200px' viewBox='0 0 100 100' preserveAspectRatio='xMidYMid')
                   circle(cx='50' cy='50' fill='none' stroke='#0D47A1' stroke-width='10' r='35' stroke-dasharray='164.93361431346415 56.97787143782138')
@@ -43,14 +43,14 @@
                 v-list-item(prepend-icon='mdi-book-open-page-variant-outline' v-for='article in sliceArticles')
                   router-link(:to="'/article/' + article._id" ) {{ new Date(article.date).toLocaleDateString() }}  {{ article.title }}
             .col-12(v-else)
-              h1.mx-auto(v-if='loaded') 沒有競賽
+              h1.text-center.mt-3(v-if='loaded') 沒有競賽
               .col-12(v-else).mx-auto
                 svg( xmlns='http://www.w3.org/2000/svg' xlink='http://www.w3.org/1999/xlink' style='margin:auto;background:#fff;display:block;' width='200px' height='200px' viewBox='0 0 100 100' preserveAspectRatio='xMidYMid')
                   circle(cx='50' cy='50' fill='none' stroke='#0D47A1' stroke-width='10' r='35' stroke-dasharray='164.93361431346415 56.97787143782138')
                     animateTransform(attributeName='transform' type='rotate' repeatCount='indefinite' dur='1s' values='0 50 50;360 50 50' keyTimes='0;1')
           v-pagination(
             v-model='currentPage'
-            :length="Math.ceil(sliceArticles.length / pageSize) " 
+            :length="Math.ceil(articles[tab].length / pageSize) " 
             rounded="circle" 
             next-icon="mdi-menu-right"
             prev-icon="mdi-menu-left" 
@@ -78,7 +78,11 @@ const currentPage = ref(1)
 const sliceArticles = computed(()=>{
   return articles[tab.value].slice((currentPage.value * pageSize) - pageSize,(currentPage.value * pageSize))
 })
-// console.log(tab.value)
+
+const resetPage = () => {
+  currentPage.value = 1
+}
+
 const init = async () => {
   try {
     const { data } = await api.get('/articles')

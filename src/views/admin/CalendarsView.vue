@@ -79,7 +79,6 @@ const currentPage = ref(1)
 const sliceCalendars = computed (()=>{
   return calendars.slice((currentPage.value * pageSize) - pageSize,(currentPage.value * pageSize))
 })
-console.log(calendars)
 
 const dialog = ref(false)
 const text = ref('')

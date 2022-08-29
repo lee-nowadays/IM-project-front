@@ -58,7 +58,8 @@ const init = async () => {
     article._id = data.article._id
     article.title = data.article.title
     article.content = data.article.content
-    article.image =  import.meta.env.VITE_API + "/files/" + data.article.image 
+    article.image = data.article.image.length === 0 ? '' : import.meta.env.VITE_API + "/files/" + data.article.image 
+
     article.files = data.article.files.map(file => {
       return {
         name: file,

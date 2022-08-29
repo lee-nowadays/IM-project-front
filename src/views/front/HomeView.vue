@@ -23,7 +23,7 @@
           v-list-item(prepend-icon='mdi-book-open-page-variant-outline' v-if="sliceArticles.length > 0" v-for='(sliceArticle, idx) in sliceArticles' :key='idx')
             router-link(:to="'/article/' + sliceArticle._id" ) {{ new Date(sliceArticle.date).toLocaleDateString() }}  {{ sliceArticle.title }}
           .col-12(v-else)
-              h1.mx-auto(v-if='loaded') 沒有消息
+              h1.text-center(v-if='loaded') 沒有消息
               .col-12(v-else).mx-auto
                 svg( xmlns='http://www.w3.org/2000/svg' xlink='http://www.w3.org/1999/xlink' style='margin:auto;background:#fff;display:block;' width='200px' height='200px' viewBox='0 0 100 100' preserveAspectRatio='xMidYMid')
                   circle(cx='50' cy='50' fill='none' stroke='#0D47A1' stroke-width='10' r='35' stroke-dasharray='164.93361431346415 56.97787143782138')
@@ -49,7 +49,7 @@ gsap.registerPlugin(ScrollToPlugin, ScrollTrigger)
 onMounted(()=>{
   gsap.from('.lastnews ',{
     y:300  ,
-    duration:1,
+    duration:0.5,
     scrollTrigger:{
       // 沒有 trigger 觸發目標，目標會變成整份文件滾動監控
       start:'40% center',
@@ -69,14 +69,6 @@ const currentPage = ref(1)
 const sliceArticles = computed (()=>{
   return articles.slice((currentPage.value * pageSize) - pageSize,(currentPage.value * pageSize))
 })
-// const Pagination = () =>{
-//   if(sliceArticles.length === 0 ){
-//     sliceArticles.push(...articles.slice((currentPage.value * pageSize) - pageSize,(currentPage.value * pageSize)))
-//   }else{
-//     sliceArticles.splice(0,10)
-//     sliceArticles.push(...articles.slice((currentPage.value * pageSize) - pageSize,(currentPage.value * pageSize)))
-//   }
-// }
 
 const init = async () => {
   try {

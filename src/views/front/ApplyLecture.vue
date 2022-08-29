@@ -26,13 +26,13 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { reactive,ref } from 'vue'
 import Swal from 'sweetalert2'
 import { apiAuth } from '@/plugins/axios.js';
 import { useStudentStore } from '@/stores/student'
 
 const student = useStudentStore()
-
+const loaded = ref(false)
 const lectures = reactive([])
 
 
@@ -51,12 +51,14 @@ const init = async () => {
       }
     })
   } catch (error) {
+    console.log(error)
     Swal.fire({
       icon: 'error',
       title: '失敗',
       text: '伺服器錯誤'
     })
   }
+  loaded.value = true
 }
 init()
 </script>

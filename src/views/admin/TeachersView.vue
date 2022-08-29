@@ -161,7 +161,8 @@ const submitForm = async () => {
   try {
     if (form._id.length === 0) {
       const { data } = await apiAuth.post('/teachers', teacherfd)
-      teachers.push(data.teacher)
+      const result = (data.teacher.image = import.meta.env.VITE_API + "/files/" + data.teacher.image , data)
+      teachers.push(result.teacher)
       Swal.fire({
         icon: 'success',
         title: '成功',
@@ -169,8 +170,8 @@ const submitForm = async () => {
       })
     } else {
       const { data } = await apiAuth.patch('/teachers/' + form._id, teacherfd)
-
-      teachers[form.idx] = data.teacher
+      const result = (data.teacher.image = import.meta.env.VITE_API + "/files/" + data.teacher.image , data)
+      teachers[form.idx] = result.teacher
       Swal.fire({
         icon: 'success',
         title: '成功',
