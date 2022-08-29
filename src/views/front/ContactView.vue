@@ -25,18 +25,7 @@
 </template>
 <style>
 
-.col-12{
-  padding: 12px;
-}
-.v-card{
-  width: 100%;
-}
-.v-form{
-  width: 100%;
-  padding: 12px;
-  display: flex;
-  flex-wrap: wrap;
-}
+
 </style>
 
 <script setup>

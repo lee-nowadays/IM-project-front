@@ -58,14 +58,7 @@ v-main
         p.text-center Copyright &copy; 2022 . All rights reserved.
 
 </template>
-<style>
-.box{
-  width: 300px;
-  height: 300px;
-  background: #f00;
-}
 
-</style>
 <script setup>
 import { onMounted } from 'vue'
 import { storeToRefs } from 'pinia'

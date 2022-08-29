@@ -10,9 +10,6 @@
         v-card-text {{ text }}
 </template>
 
-<style>
-
-</style>
 
 <script setup>
 import '@fullcalendar/core/vdom'

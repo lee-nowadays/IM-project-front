@@ -74,17 +74,7 @@
       prev-icon="mdi-menu-left" 
     )
 </template>
-<style>
-.quill{
-  height: 100%;
-}
-.ql-container{
-  min-height: 300px;
-}
-.v-input__details{
-  display: none;
-}
-</style>
+
 <script setup>
 import { QuillEditor } from '@vueup/vue-quill'
 import '@vueup/vue-quill/dist/vue-quill.snow.css';

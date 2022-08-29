@@ -54,11 +54,7 @@
     prev-icon="mdi-menu-left" 
   )
 </template>
-<style>
-.fc-event-title{
-  text-overflow: ellipsis;
-}
-</style>
+
 <script setup>
 import { reactive, ref, computed } from 'vue'
 import Swal from 'sweetalert2'
