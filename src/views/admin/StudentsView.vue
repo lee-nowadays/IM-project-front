@@ -71,7 +71,7 @@
 import { reactive, ref, computed } from 'vue'
 import Swal from 'sweetalert2'
 import { apiAuth } from '@/plugins/axios'
-import { isEmail } from 'validator'
+import isEmail from 'validator/lib/isEmail'
 
 const students = reactive([])
 
