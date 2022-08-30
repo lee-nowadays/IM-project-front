@@ -26,12 +26,13 @@ v-app-bar.appbar
     v-btn(exact to='/calendar') 行事曆
     v-btn(exact to='/teachers') 師資介紹
     v-btn(exact to='/contact') 聯絡我們
-    v-btn(v-if='isLogin && isAdmin' to='/admin') 管理
     v-btn(v-if='!isLogin' to='/login') 登入
     v-menu(open-on-hover)
       template(#activator="{ props }")
         v-btn(v-if='isLogin' icon='mdi-account' v-bind="props")
       v-list.studentlist
+        v-list-item(v-if='isAdmin' to='/admin')
+          v-list-item-title 後台管理
         v-list-item(v-if='!isAdmin' :to="'/student/' + student._id")
           v-list-item-title 個人資料
         v-list-item(v-if='!isAdmin' to='/applyLecture')
