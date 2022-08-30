@@ -33,7 +33,7 @@
               td.text-center(colspan="5") 沒有老師             
     v-dialog(v-model='form.dialog' scrollable)
       v-form(v-model='form.valid' @submit.prevent='submitForm' style="height:900px ; width: 100%;")
-        v-card
+        v-card.adminForm
           v-card-title
             .text-h5 {{form._id.length > 0 ? '編輯老師' : '新增老師' }}
           v-card-text

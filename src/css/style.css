@@ -316,7 +316,7 @@ h1 {
   min-height: 300px;
 }
 
-.v-input__details {
+#articles .v-input__details {
   display: none !important;
 }
 

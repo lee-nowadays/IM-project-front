@@ -41,7 +41,7 @@
               td.text-center(colspan="7") 沒有文章
     v-dialog(v-model='form.dialog' scrollable)
       v-form(v-model='form.valid' @submit.prevent='submitForm' style="height:900px ; width: 100%;")
-        v-card
+        v-card.adminForm
           v-card-title
             .text-h5 {{ form._id.length > 0 ? '編輯文章' : '新增文章' }}
           v-card-text

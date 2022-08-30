@@ -31,7 +31,7 @@
               h3.mt-3 沒有行事曆             
   v-dialog(v-model='form.dialog' scrollable)
     v-form(v-model='form.valid' @submit.prevent='submitForm' style="height:900px ; width: 500px;")
-      v-card
+      v-card.adminForm
         v-card-title
           .text-h5 {{form._id.length > 0 ? '編輯行事曆' : '新增行事曆' }}
         v-card-text

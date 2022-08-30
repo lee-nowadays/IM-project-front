@@ -32,7 +32,7 @@
               td.text-center(colspan="5") 沒有學生             
     v-dialog(v-model='form.dialog' scrollable)
       v-form(v-model='form.valid' @submit.prevent='submitForm' style="height:900px ; width: 100%;")
-        v-card
+        v-card.adminForm
           v-card-title
             .text-h5 {{form._id.length > 0 ? '編輯學生' : '新增學生' }}
           v-card-text

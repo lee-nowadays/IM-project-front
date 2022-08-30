@@ -285,9 +285,12 @@ h1{
 .ql-container{
   min-height: 300px;
 }
-.v-input__details{
-  display: none !important;
+#articles{
+  .v-input__details{
+    display: none !important;
+  }
 }
+
 
 
 @media (min-width:576px){
