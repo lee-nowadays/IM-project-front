@@ -39,21 +39,21 @@
             .container
               .row
                 .col-12
-                  v-text-field(v-model='form.studentId' label='學號' :rules='[rules.required]'  variant="outlined"  counter="8" maxlength="8")
+                  v-text-field(v-model='form.studentId' label='學號' :rules='rules.studentId'  variant="outlined"  counter="8" maxlength="8")
                 .col-12
-                  v-text-field(v-model='form.personalId' label='身份證字號' :rules='[rules.required]'  variant="outlined" counter="10" maxlength="10")
+                  v-text-field(v-model='form.personalId' label='身份證字號' :rules='rules.personalId' variant="outlined" counter="10" maxlength="10")
                 .col-12
-                  v-text-field(v-model='form.name' label='姓名' :rules='[rules.required]'  variant="outlined")
+                  v-text-field(v-model='form.name' label='姓名' :rules='rules.required' variant="outlined")
                 .col-12.col-md-6
-                  v-text-field( v-model='form.class' label='班級' :rules='[rules.required]'  variant="outlined")
+                  v-text-field( v-model='form.class' label='班級' :rules='rules.required' variant="outlined")
                 .col-12.col-md-6
-                  v-text-field(v-model='form.phone' label='手機' :rules='[rules.required]'  variant="outlined"  counter="10" maxlength="10")
+                  v-text-field(v-model='form.phone' label='手機' :rules='rules.phone' variant="outlined"  counter="10" maxlength="10")
                 .col-12.col-md-6
-                  v-text-field(v-model='form.residenceAddress' label='戶籍地址' :rules='[rules.required]'  variant="outlined")
+                  v-text-field(v-model='form.residenceAddress' :rules='rules.required' label='戶籍地址'  variant="outlined")
                 .col-12.col-md-6
-                  v-text-field(v-model='form.currentAddress' label='聯絡地址' :rules='[rules.required]'  variant="outlined")
+                  v-text-field(v-model='form.currentAddress' :rules='rules.required' label='聯絡地址'  variant="outlined")
                 .col-12
-                  v-text-field(v-model='form.email' label='信箱' :rules='[rules.required]'  variant="outlined")
+                  v-text-field(v-model='form.email' label='信箱' :rules='rules.email' variant="outlined")
           v-card-actions
             v-spacer
             v-btn(color='error' @click='form.dialog = false' :disabled='form.submitting') 取消
@@ -71,6 +71,7 @@
 import { reactive, ref, computed } from 'vue'
 import Swal from 'sweetalert2'
 import { apiAuth } from '@/plugins/axios'
+import { isEmail } from 'validator'
 
 const students = reactive([])
 
@@ -97,15 +98,37 @@ const form = reactive({
   submitting: false
 })
 // 用規則分類
+// const rules = reactive({
+//   studentId(v){
+//     !!v || '學號必填',
+//     /^[0-9]+$/.test(v) || '學號只有數字',
+//     (v.length >= 8 && v.length <= 8) || '學號為8位數'
+//   },
+//   required(v) {
+//     return !!v || '必填'
+//   }
+// })
 const rules = reactive({
-  studentId(v){
-    !!v || '學號必填',
-    /^[0-9]+$/.test(v) || '學號只有數字',
-    (v.length >= 8 && v.length <= 8) || '學號為8位數'
-  },
-  required(v) {
-    return !!v || '必填'
-  }
+  studentId: [
+    v => !!v || '學號必填',
+    v => /^[0-9]+$/.test(v) || '學號只有數字',
+    v => (v.length >= 8 && v.length <= 8) || '學號為8位數'
+  ],
+  phone:[
+    v => /^[0][9][0-9]*$/.test(v) || '手機格式錯誤',
+    v => (v.length >= 10 && v.length <= 10) || '手機長度為 10 位數'
+  ],
+  email: [
+    v => !!v || '信箱必填',
+    v => isEmail(v) || '信箱格式錯誤'
+  ],
+  required:[
+    v => !!v || '必填'
+  ],
+  personalId:[
+    v => !!v || '必填',
+    v => /^[A-Z]+[1-2]+[0-9]*$/.test(v) || '身份證字號格式錯誤'
+  ]
 })
 
 const openDialog = (_id, idx) => { 
