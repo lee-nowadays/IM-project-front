@@ -32,11 +32,11 @@ v-app-bar.appbar
       template(#activator="{ props }")
         v-btn(v-if='isLogin' icon='mdi-account' v-bind="props")
       v-list.studentlist
-        v-list-item(:to="'/student/' + student._id")
+        v-list-item(v-if='!isAdmin' :to="'/student/' + student._id")
           v-list-item-title 個人資料
-        v-list-item(to='/applyLecture')
+        v-list-item(v-if='!isAdmin' to='/applyLecture')
           v-list-item-title 查看報名講座
-        v-list-item(to='/passLecture')
+        v-list-item(v-if='!isAdmin' to='/passLecture')
           v-list-item-title 歷史報名講座
         v-list-item(@click='logout')
           v-list-item-title 登出

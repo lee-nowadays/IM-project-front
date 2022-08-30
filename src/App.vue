@@ -17,8 +17,8 @@ useStudentStore().getStudent()
   height: 500px;
   margin: auto;
 }
-.adminForm .v-input__details{
-  display: none !important;
+.adminForm .col-12{
+  padding: 0px 8px;
 }
 @media (min-width:576px){
   .v-dialog .v-overlay__content > .contactCard{
