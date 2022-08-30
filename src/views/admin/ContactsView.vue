@@ -11,13 +11,13 @@
           tr
             th 主旨
             th 問題類型
-            th 問題描述
+            th(style="width: 500px;") 問題描述
             th(colspan="2") 管理
         tbody
           tr(v-if='contacts.length > 0' v-for='(contact, idx) in contacts' :key='contact._id')
             td {{ contact.subject }}
             td {{ contact.question }}
-            td {{ contact.description }}
+            td(style="word-break: break-all;") {{ contact.description }}
             td
               v-btn(color='blue darken-4' @click='openDialog(contact._id,idx)' variant="outlined") 查看
           tr(v-else)
@@ -32,9 +32,9 @@
             .col-12
               h3(style="color:#0D47A1;font-weight: bold;") 問題類型
               p(style="color: #000; font-weight: bold; font-size: 1.1rem;") {{ contacts.question }}
-            .col-12(style="width: 300px; text-overflow: ellipsis;")
+            .col-12
               h3(style="color:#0D47A1;font-weight: bold;") 問題描述
-              p(style="color: #000; font-weight: bold; font-size: 1.1rem;") {{ contacts.description }}
+              p(style="color: #000; font-weight: bold; font-size: 1.1rem;word-break: break-all;") {{ contacts.description }}
 </template>
 
 <script setup>

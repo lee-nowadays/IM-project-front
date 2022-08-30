@@ -248,7 +248,8 @@ h1 {
   right: 0;
   bottom: 0;
   color: #fff;
-  font-size: 3rem;
+  font-size: 2rem;
+  font-weight: bold;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -263,12 +264,18 @@ h1 {
   background: -webkit-gradient(linear, left bottom, left top, from(rgb(0, 0, 0)), color-stop(rgba(0, 0, 0, 0.3)), to(transparent));
   background: linear-gradient(0deg, rgb(0, 0, 0), rgba(0, 0, 0, 0.3), transparent);
 }
-#teachers .teacherDialog {
-  height: 100%;
-  width: 100%;
+#teachers .overlay .v-btn__content {
+  white-space: normal;
 }
-#teachers .v-card .v-card-text {
-  width: 400px;
+
+#contact .v-form {
+  width: 100%;
+  padding: 12px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 #studentProfile .v-form {
@@ -299,6 +306,18 @@ h1 {
 
 .fc-event-title {
   text-overflow: ellipsis;
+}
+
+.quill {
+  height: 100%;
+}
+
+.ql-container {
+  min-height: 300px;
+}
+
+.v-input__details {
+  display: none !important;
 }
 
 @media (min-width: 576px) {
@@ -332,9 +351,6 @@ h1 {
   #mainphoto .overlay ul h5 {
     font-size: 0.25rem !important;
     font-weight: 900;
-  }
-  .teacher .teacherDialog h2 {
-    font-size: 5rem;
   }
 }
 @media (min-width: 992px) {
