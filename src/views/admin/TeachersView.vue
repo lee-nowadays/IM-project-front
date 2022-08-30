@@ -50,7 +50,7 @@
                 .col-12.col-md-4
                   v-text-field(v-model='form.fax' label='傳真'  variant="outlined")
                 .col-12.col-md-4
-                  v-text-field(v-model='form.email' label='信箱' :rules='[rules.required]'  variant="outlined")
+                  v-text-field(v-model='form.email' label='信箱' :rules='emailrules.email'  variant="outlined")
                 .col-12
                   v-textarea( v-model='form.experience' label='經歷'  variant="outlined")
                 .col-12
@@ -73,6 +73,8 @@
 import { reactive, ref, computed } from 'vue'
 import Swal from 'sweetalert2'
 import { apiAuth } from '@/plugins/axios'
+import isEmail from 'validator/lib/isEmail'
+
 
 const teachers = reactive([])
 
@@ -106,7 +108,13 @@ const rules = reactive({
   },
   size(v) {
     return !v || !v.length || (v[0]?.type?.includes('image') && v[0]?.size < 1024 * 1024) || '檔案格式不符'
-  }
+  },
+})
+const emailrules = reactive ({
+  email: [
+    v => !!v || '信箱必填',
+    v => isEmail(v) || '信箱格式錯誤'
+  ]
 })
 
 const openDialog = (_id, idx) => { 
