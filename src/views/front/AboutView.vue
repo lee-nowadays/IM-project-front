@@ -28,4 +28,6 @@
         h2 系所沿革
         v-img(src='https://im100.chihlee.edu.tw/var/file/37/1037/img/917963187.png')
 </template>
-<script></script>
+<script>
+console.log('123');
+</script>
